@@ -1,7 +1,3 @@
-# Tialo's skills
-
-Agent skills for Claude Code, Codex and other coding agents.
-
 ## Skills
 
 ### [`report-upstream-issues`](skills/report-upstream-issues/SKILL.md)
