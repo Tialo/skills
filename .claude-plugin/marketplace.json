@@ -1,0 +1,23 @@
+{
+  "name": "tialo",
+  "owner": {
+    "name": "Tialo",
+    "url": "https://github.com/Tialo"
+  },
+  "description": "Tialo's agent skills.",
+  "plugins": [
+    {
+      "name": "tialo-skills",
+      "source": "./",
+      "description": "Tialo's agent skills.",
+      "category": "productivity",
+      "keywords": [
+        "skills",
+        "dependencies",
+        "upstream",
+        "open-source",
+        "bug-report"
+      ]
+    }
+  ]
+}

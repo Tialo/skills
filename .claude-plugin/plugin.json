@@ -1,0 +1,22 @@
+{
+  "name": "tialo-skills",
+  "version": "0.1.0",
+  "description": "Tialo's agent skills.",
+  "author": {
+    "name": "Tialo",
+    "url": "https://github.com/Tialo"
+  },
+  "homepage": "https://github.com/Tialo/skills",
+  "repository": "https://github.com/Tialo/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "skills",
+    "dependencies",
+    "upstream",
+    "open-source",
+    "bug-report"
+  ],
+  "skills": [
+    "./skills/report-upstream-issues"
+  ]
+}
