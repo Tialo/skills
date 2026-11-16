@@ -12,7 +12,7 @@ In a Cursor chat, run:
 
 Cursor confirms the plugin is installed.
 
-In Claude Code, run `/plugin marketplace add cursor/plugins`, then `/plugin install tstack@cursor-plugins`. Claude Code prefixes plugin commands, so each command in this guide takes a `tstack:` prefix there, such as `/tstack:setup-tstack`, which writes its model rule to `~/.claude/rules/tstack-models.md`. The [Claude Code adapter](../harness/claude-code.md) covers the other differences.
+In Claude Code, run `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. Claude Code prefixes plugin commands, so each command in this guide takes a `tstack:` prefix there, such as `/tstack:setup-tstack`, which writes its model rule to `~/.claude/rules/tstack-models.md`. The [Claude Code adapter](../harness/claude-code.md) covers the other differences.
 
 ## Pick your models
 

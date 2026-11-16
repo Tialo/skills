@@ -21,15 +21,15 @@ fork it. improve it. make it yours. PRs are welcome!
 in claude code:
 
 ```bash
-/plugin marketplace add cursor/plugins
-/plugin install tstack@cursor-plugins
+/plugin marketplace add Tialo/skills
+/plugin install tstack@tialo
 ```
 
-claude code leaves auto-update off for third-party marketplaces, so tstack stays on the version you installed. to turn it on, run `/plugin`, open the **marketplaces** tab, select `cursor-plugins`, and choose **enable auto-update**. to update once by hand, run `claude plugin update tstack@cursor-plugins`.
+claude code leaves auto-update off for third-party marketplaces, so tstack stays on the version you installed. to turn it on, run `/plugin`, open the **marketplaces** tab, select `tialo`, and choose **enable auto-update**. to update once by hand, run `claude plugin update tstack@tialo`.
 
 claude code prefixes plugin commands and agents, so `/poteto-mode` is `/tstack:poteto-mode`. the [claude code adapter](./docs/harness/claude-code.md) maps every other cursor name. in claude code, `/tstack:setup-tstack` writes your model choices to `~/.claude/rules/tstack-models.md`, and a step that needs a cursor-only feature, such as bugbot or automations, is skipped with a one-line note.
 
-claude code installs a generated copy of tstack, including this readme and the guide, from [`harness/pstack/`](https://github.com/cursor/plugins/tree/main/harness/pstack) at the repository root. after you change tstack, run `node scripts/generate-pstack-harness-trees.mjs` from the repository root and commit the result. ci fails while the generated copy is out of date.
+claude code installs a generated copy of tstack, including this readme and the guide, from [`harness/pstack/`](https://github.com/Tialo/skills/tree/main/harness/pstack) at the repository root. after you change tstack, run `node scripts/generate-pstack-harness-trees.mjs` from the repository root and commit the result. ci fails while the generated copy is out of date.
 
 ## get started
 
