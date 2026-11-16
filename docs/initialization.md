@@ -2,7 +2,7 @@
 
 Use this guide for the first adaptation of pstack into this repository. Subsequent updates follow [Syncing tstack with pstack](upstream-sync.md). These are instructions for future initialization, not a claim that the import or platform support is already complete.
 
-tstack is a personal, Claude-first plugin with one main entry point, `tstack-mode`. Its skills can be rewritten, renamed, combined, replaced, or removed. The upstream relationship is maintained through a commit SHA and meaningful CHANGELOG entries, without retaining an original pstack copy in this project.
+tstack is a personal, Claude-first plugin with one main entry point, `tstack-mode`. Its skills can be rewritten, renamed, combined, replaced, or removed. During initialization, keep a temporary pstack source copy in this project and gradually populate tstack with files processed with the user. After initialization, maintain the upstream relationship through a commit SHA and meaningful CHANGELOG entries.
 
 ## Source and generated packages
 
@@ -13,7 +13,6 @@ tstack/                              Editable Claude Code plugin
   .claude-plugin/plugin.json
   skills/
     tstack-mode/SKILL.md
-    report-upstream-issues/SKILL.md
   agents/                            Retained and adapted agent definitions
   docs/harness/cursor.md              Claude-to-Cursor adapter
   licenses/pstack-MIT.txt             Upstream license notice
@@ -22,27 +21,46 @@ scripts/generate_cursor_plugin.py    Python generator
 upstream.sha                         Last completed upstream baseline
 CHANGELOG.md                         Significant changes and decisions
 docs/                                Repository maintenance guides
+pstack/                              Temporary, unchanged upstream source
+docs/initialization-decisions.md     Temporary adaptation decisions and lessons
+docs/initialization-progress.md      Temporary per-file inventory and progress
 ```
 
 Create other supporting directories only when retained components need them. Keep the generated package outside `tstack/`, so installing the primary plugin does not also install its generated counterpart.
 
 Update the marketplace configuration to point Claude Code at `tstack/` and Cursor at `harness/tstack/cursor/`. Use `tstack` as the plugin identity and preserve the existing repository and marketplace identities unless the user asks to change them. Keep root maintenance documents separate from documentation that must ship with the plugin.
 
-The existing `report-upstream-issues` skill is a local component to preserve and integrate. Moving it into the plugin is not a reason to replace its behavior with an upstream alternative.
+The existing `skills/report-upstream-issues/` skill stays in its current location unchanged during initialization. Its adaptation and integration into tstack are separate, later work and are not an initialization acceptance criterion.
 
-## 1. Choose and inspect the upstream baseline
+## 1. Clone pstack and create the working records
 
-Resolve `cursor/plugins` `main` to a full SHA and use that revision throughout initialization. Read its contents through GitHub or a temporary checkout outside this project. Record the selected revision in the working notes; write the completed baseline only after the initialization checks pass.
+Clone `cursor/plugins` into a temporary checkout outside this project, resolve `main` to a full SHA, and check out that revision. Copy the complete `pstack/` directory, including hidden files, into this project's root as `pstack/`. Keep that copy unchanged as the source for the whole initialization; put adapted files into `tstack/` only after the review below. Keep the upstream Git database outside this project.
 
-Inventory all of pstack, including skills, playbooks, principles, agents, references, executable helpers, assets, documentation, and automations. Also inspect the harness generator and its output, plus any external dependencies needed by retained workflows. Looking at `SKILL.md` alone is insufficient to establish what a skill needs.
+Then create exactly two temporary Markdown working records in this project:
+
+- `docs/initialization-decisions.md`: record agreed adaptation rules, user preferences, reasons for decisions, corrections, and lessons that later sessions must retain to avoid repeating mistakes. Reference affected upstream and local paths. When a decision changes, identify which earlier decision it supersedes.
+- `docs/initialization-progress.md`: record the full selected upstream SHA and one row for every file in the copied `pstack/` tree, including hidden files. Each row contains the upstream path, verdict (`pending`, `keep`, `adapt`, `combine`, `replace`, or `exclude`), destination path or paths where applicable, agreed and actual changes, and processing status (`pending`, `discussing`, `in-progress`, `blocked`, or `done`). Link to the decision record when a rationale needs more detail. Above the table, identify the current file or agreed group, any unanswered question or blocker, and the next action.
+
+Inventory skills, playbooks, principles, agents, references, executable helpers, assets, documentation, and automations at file level. Include binary and other non-Markdown files; looking at `SKILL.md` alone is insufficient. Inspect the upstream harness generator and its output, plus external dependencies needed by retained workflows, in the external checkout. Add relevant files outside `pstack/` to the same progress record using their upstream paths.
+
+The source copy and these two records are working material, outside both installable packages. Keep them available across sessions until initialization is complete. At the start of every resumed session, read both records and inspect existing edits, then continue the current file or group. Reuse the recorded SHA and source copy. Write the completed baseline to `upstream.sha` only after the initialization checks pass.
 
 Useful inspected starting references are the [upstream generator](https://github.com/cursor/plugins/blob/bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7/scripts/generate-pstack-harness-trees.mjs), [Claude Code adapter](https://github.com/cursor/plugins/blob/bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7/pstack/docs/harness/claude-code.md), and [harness description](https://github.com/cursor/plugins/blob/bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7/harness/pstack/README.md). They document the version examined during planning. Inspect the chosen initialization revision again instead of assuming those files or host APIs are unchanged.
 
-## 2. Decide what belongs in tstack
+## 2. Discuss and process one file at a time
 
-Review each component and choose whether to adapt, combine, replace, or exclude it. Discuss meaningful workflow and preference choices with the user; ordinary translation and packaging mechanics can be handled directly. Present connected decisions together, including dependencies that make a proposed exclusion affect another skill.
+Work through the progress inventory sequentially. For each file:
 
-Use an inventory during the work to ensure every component is accounted for. The lasting record is the resulting plugin plus a concise initialization CHANGELOG entry, not a separate permanent mapping registry.
+1. Read it and enough surrounding context to explain what it does, its notable behavior and assumptions, dependencies, and host-specific details. Explain these to the user, including consequences of retaining or excluding it.
+2. Discuss whether it belongs in tstack and what should change. Propose a verdict and destination, and wait for the user's decision before adapting or excluding it. If the decision is already explicit in the conversation or working records, apply it without asking again.
+3. Record the decision and its rationale in the working records. Apply the agreed changes to the destination in `tstack/`, or record the agreed exclusion. Leave the source copy intact. Handle routine implementation details within the agreed scope; return to the user if a new choice is needed.
+4. Check the result and update the progress row with the actual changes and status. Mark a retained file `done` only when its agreed adaptation is implemented and checked; mark an excluded file `done` when its exclusion and rationale are recorded. Track unresolved dependencies as blockers rather than claiming the file is ready.
+
+Keep one file active until its decision and processing are complete. While waiting for an answer, stay on that file; do not begin discussing or adapting the next one. Closely coupled files may be handled together when a coherent decision requires it: explain the connection, agree the group with the user, and keep a separate inventory row for every file. Finish that group before moving on. If a dependency prevents completion, discuss expanding the current group with the user.
+
+Update both records as decisions are made and work progresses, so another session can resume without repeating settled questions or mistakes. The implementation requirements in sections 3–5 apply to the files retained through this review; they do not authorize a bulk import ahead of the user's decisions. tstack grows as files are processed.
+
+The lasting record is the resulting plugin plus a concise initialization CHANGELOG entry. At finalization, transfer enduring decisions from the temporary records into that entry and the relevant maintained instructions.
 
 Keep enough provenance in that entry to reconstruct intentional differences:
 
@@ -111,16 +129,20 @@ The Python requirement applies to this generator. Retained upstream utilities ma
 
 Before marking initialization complete:
 
-1. Account for every inventoried upstream component and preserve the existing local skill. Confirm that substantial exclusions and behavioral choices have a recorded rationale.
+1. Reconcile the progress inventory with the pinned source: every upstream file has an agreed verdict and a completed processing status, with exclusions and behavioral choices explained. Confirm that `skills/report-upstream-issues/` remains unchanged and its later adaptation is recorded as deferred work.
 2. Validate skill metadata, the entry point's routes, supporting references, dependency closure, and each package's manifest and install location.
 3. Run appropriate checks for retained or modified scripts, including the generator's repeatability, stale-file cleanup, resource preservation, and non-mutating `--check` behavior.
 4. Install and exercise representative workflows in Claude Code and Cursor. Include the main entry point, direct invocation of a platform-sensitive leaf skill, a changed behavioral decision, and any retained workflow that delegates to an agent. Verify actual tool usage and results, not just generated text.
 5. Confirm that neither installed package contains a duplicate alternate package or unadapted upstream skill tree. Record any incomplete host checks as limitations rather than claiming compatibility from static checks alone.
-6. Once required checks pass, write `upstream.sha` and the initialization CHANGELOG entry together. Do not mark a partially audited import complete.
+6. Once required checks pass, write `upstream.sha` and the initialization CHANGELOG entry together. Preserve enduring decisions, corrections, and lessons from the working records in CHANGELOG or the relevant maintained instructions. Then remove the temporary `pstack/` copy and the two temporary Markdown records. The completed project retains no original pstack tree or permanent mapping registry. Do not mark a partially audited import complete.
 
 The initialization entry records the date and full upstream SHA, Claude-first source architecture, Python-based Cursor generation, the principal changes to skill membership and behavior, and reasons for those differences. Include provenance for renamed or replaced components and any deliberately deferred work. A long list of unchanged copied files is unnecessary.
 
 Update installation and development instructions to match the resulting packages. After initialization, use the [sync procedure](upstream-sync.md) for upstream updates and the same CHANGELOG for meaningful local evolution.
+
+## Later: adapt the existing local skill
+
+Adapt and integrate `skills/report-upstream-issues/` in a separate task after initialization. Review its behavior and the desired integration with the user then, preserving its local intent rather than replacing it with an upstream alternative. Record the resulting changes in CHANGELOG.
 
 ## Later: a Codex package
 
