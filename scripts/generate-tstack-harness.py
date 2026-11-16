@@ -35,7 +35,6 @@ TERMS = [
     ("todolist", re.compile(r"\btodo ?list\b", re.I)),
     ("generalPurpose", re.compile(r"generalPurpose")),
     ("poteto-agent", re.compile(r"poteto-agent")),
-    ("comment-sicko", re.compile(r"comment-sicko")),
     ("`readonly: true`", re.compile(r"readonly: (true|false)|readonly/Ask")),
     ('`environment: "cloud"`', re.compile(r'environment: "(cloud|local)"')),
     ("cloud_base_branch", re.compile(r"cloud_base_branch")),
