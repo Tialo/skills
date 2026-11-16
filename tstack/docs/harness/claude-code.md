@@ -17,7 +17,7 @@ tstack skills use Cursor names. In Claude Code, read this file once per session,
 | Cursor | Claude Code |
 | --- | --- |
 | `subagent_type: generalPurpose` | `subagent_type: "general-purpose"` |
-| `poteto-agent` | `tstack:poteto-agent` |
+| `tialo-agent` | `tstack:tialo-agent` |
 | `readonly: true` | `subagent_type: "Explore"`. It keeps `Bash`, so the brief also says "do not edit files", and you check `git status` afterward. |
 | `readonly: false` | `general-purpose`. It keeps the session's MCP servers. |
 | `environment: "cloud"` | `isolation: "worktree"`. Name the branch or commit the worker checks out. |
