@@ -9,22 +9,22 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PSTACK = ROOT / "pstack"
-SKILLS = PSTACK / "skills"
-# Outside pstack/ so Cursor, which copies the whole plugin folder, does not install this tree too.
-OUT = ROOT / "harness" / "pstack"
+TSTACK = ROOT / "tstack"
+SKILLS = TSTACK / "skills"
+# Outside tstack/ so Cursor, which copies the whole plugin folder, does not install this tree too.
+OUT = ROOT / "harness"
 TREE = "claude-code"
 ADAPTER = "docs/harness/claude-code.md"
 GUIDE = "docs/guide"
 MANIFESTS = ["plugin.json", ".claude-plugin/plugin.json"]
-COMMAND = "python3 scripts/generate-pstack-harness-trees.py"
-GITHUB = "https://github.com/cursor/plugins"
+COMMAND = "python3 scripts/generate-tstack-harness.py"
+GITHUB = "https://github.com/Tialo/skills"
 LINK = re.compile(r"\]\(([^)\s]+)\)")
-README = f"""# pstack harness tree
+README = f"""# tstack harness tree
 
-This folder is generated from `pstack/skills`, `pstack/agents`, `pstack/{GUIDE}`, `pstack/{ADAPTER}`, `pstack/README.md`, `pstack/LICENSE`, and `pstack/plugin.json`. Do not edit it by hand.
+This folder is generated from `tstack/skills`, `tstack/agents`, `tstack/{GUIDE}`, `tstack/{ADAPTER}`, `tstack/README.md`, `tstack/LICENSE`, and `tstack/plugin.json`. Do not edit it by hand.
 
-Cursor uses `pstack/` directly, and Claude Code installs `{TREE}/`. The tree leaves out the rest of `pstack/`, such as `pstack/automations` and `pstack/assets`. A relative link to a pstack file that the tree leaves out points at that file on GitHub `main` instead.
+Cursor uses `tstack/` directly, and Claude Code installs `{TREE}/`. The tree leaves out the rest of `tstack/`, such as `tstack/automations` and `tstack/assets`. A relative link to a tstack file that the tree leaves out points at that file on GitHub `main` instead.
 
 After editing those sources, run `{COMMAND}` from the repository root and commit the result.
 """
@@ -46,7 +46,7 @@ TERMS = [
     ("grok-", re.compile(r"\bgrok-\d")),
     ("gpt-", re.compile(r"\bgpt-\d")),
     ("inherit-parent", re.compile(r"inherit-parent")),
-    ("pstack-models.mdc", re.compile(r"pstack-models\.mdc")),
+    ("tstack-models.mdc", re.compile(r"tstack-models\.mdc")),
     (".cursor/skills/", re.compile(r"\.cursor/skills")),
     ("~/.cursor/plugins/", re.compile(r"\.cursor/plugins|\.cursor-plugin")),
     (".cursor/rules/", re.compile(r"\.cursor/rules|always-applied rule")),
@@ -56,7 +56,7 @@ TERMS = [
         re.compile(r"Bugbot|Cursor [Aa]utomation|cursor\.(sh|com)/automations|[Cc]loud [Aa]gent|built-in PR tool"),
     ),
 ]
-ROUTE_KEY = "Run another pstack skill"
+ROUTE_KEY = "Run another tstack skill"
 SKILL_NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
@@ -132,7 +132,7 @@ for skill, info in classes.items():
         )
     if not SKILL_NAME.match(skill) or len(skill) > 64:
         problems.append(f"skills/{skill} is not lowercase words joined by hyphens, at most 64 characters")
-adapter = text_of((PSTACK / ADAPTER).read_bytes())
+adapter = text_of((TSTACK / ADAPTER).read_bytes())
 for key, using in users.items():
     if key not in adapter:
         problems.append(f"Claude Code adapter has no row for {key}, used by {', '.join(using)}")
@@ -143,12 +143,12 @@ if problems:
 
 
 def resolve(source, href):
-    """The pstack-relative path that a relative link in `source` points at, if that path exists."""
+    """The tstack-relative path that a relative link in `source` points at, if that path exists."""
     target = re.sub(r"[#?].*", "", href)
     if not target or re.match(r"[a-z][a-z0-9+.-]*:", target, re.I):
         return None
     path = re.sub(r"/$", "", posixpath.normpath(f"{posixpath.dirname(source) or '.'}/{target}"))
-    return path if (PSTACK / path).exists() else None
+    return path if (TSTACK / path).exists() else None
 
 
 def has(files, path):
@@ -159,15 +159,15 @@ def render():
     # Skills read the adapter, the guide, and the README at runtime, so Claude Code never fetches them.
     copies = [
         *walk(SKILLS),
-        *walk(PSTACK / "agents"),
-        *walk(PSTACK / GUIDE),
-        PSTACK / ADAPTER,
-        PSTACK / "README.md",
+        *walk(TSTACK / "agents"),
+        *walk(TSTACK / GUIDE),
+        TSTACK / ADAPTER,
+        TSTACK / "README.md",
     ]
-    files = {rel(path, PSTACK): file(path) for path in copies}
+    files = {rel(path, TSTACK): file(path) for path in copies}
     line = (
         f"In Claude Code, read [the Claude Code adapter](../../{ADAPTER}) once per session before you follow this skill. "
-        "It maps the Cursor names in pstack skills to Claude Code."
+        "It maps the Cursor names in tstack skills to Claude Code."
     )
     for skill, info in classes.items():
         path = f"skills/{skill}/SKILL.md"
@@ -175,9 +175,9 @@ def render():
         if info["wrap"]:
             text = re.sub(r"^(# .*)\n+", lambda m: f"{m.group(1)}\n\n{line}\n\n", text, count=1, flags=re.M)
             files[path]["bytes"] = text.encode("utf-8")
-    files["LICENSE"] = file(PSTACK / "LICENSE")
+    files["LICENSE"] = file(TSTACK / "LICENSE")
     for manifest in MANIFESTS:
-        files[manifest] = file(PSTACK / "plugin.json")
+        files[manifest] = file(TSTACK / "plugin.json")
     for path, entry in files.items():
         if not path.endswith(".md"):
             continue
@@ -187,16 +187,16 @@ def render():
             target = resolve(path, href)
             if not target or target.split("/")[0] == ".." or has(files, target):
                 return m.group(0)
-            kind = "tree" if (PSTACK / target).is_dir() else "blob"
+            kind = "tree" if (TSTACK / target).is_dir() else "blob"
             suffix = re.search(r"[#?]", href)
-            return f"]({GITHUB}/{kind}/main/pstack/{target}{href[suffix.start():] if suffix else ''})"
+            return f"]({GITHUB}/{kind}/main/tstack/{target}{href[suffix.start():] if suffix else ''})"
 
         entry["bytes"] = LINK.sub(relink, text_of(entry["bytes"])).encode("utf-8")
     return files
 
 
-# Claude Code installs only the tree, so a relative link that works from pstack/ has to work inside the tree too.
-# Links to pstack files that the tree leaves out already point at GitHub, so a failure here is a link that leaves pstack/.
+# Claude Code installs only the tree, so a relative link that works from tstack/ has to work inside the tree too.
+# Links to tstack files that the tree leaves out already point at GitHub, so a failure here is a link that leaves tstack/.
 files = render()
 rendered = {"README.md": {"bytes": README.encode("utf-8"), "executable": False}}
 dangling = []
@@ -208,7 +208,7 @@ for path, entry in files.items():
         href = m.group(1)
         target = resolve(path, href)
         if target and not has(files, target):
-            dangling.append(f"harness/pstack/{TREE}/{path} links to {href}, which is not in the tree")
+            dangling.append(f"harness/{TREE}/{path} links to {href}, which is not in the tree")
 for link in dangling:
     print(f"FAIL {link}")
 if dangling:
@@ -225,11 +225,11 @@ if "--check" in sys.argv[1:]:
         or rendered[path]["executable"] != on_disk[path]["executable"]
     ]
     for path in drifted[:20]:
-        print(f"harness/pstack/{path}")
+        print(f"harness/{path}")
     if drifted:
-        print(f"harness/pstack is out of date. Run `{COMMAND}` and commit the result.")
+        print(f"harness is out of date. Run `{COMMAND}` and commit the result.")
         sys.exit(1)
-    print("harness/pstack is up to date.")
+    print("harness is up to date.")
 else:
     shutil.rmtree(OUT, ignore_errors=True)
     for path, entry in rendered.items():

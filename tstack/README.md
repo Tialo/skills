@@ -29,7 +29,7 @@ claude code leaves auto-update off for third-party marketplaces, so tstack stays
 
 claude code prefixes plugin commands and agents, so `/poteto-mode` is `/tstack:poteto-mode`. the [claude code adapter](./docs/harness/claude-code.md) maps every other cursor name. in claude code, `/tstack:setup-tstack` writes your model choices to `~/.claude/rules/tstack-models.md`, and a step that needs a cursor-only feature, such as bugbot or automations, is skipped with a one-line note.
 
-claude code installs a generated copy of tstack, including this readme and the guide, from [`harness/pstack/`](https://github.com/Tialo/skills/tree/main/harness/pstack) at the repository root. after you change tstack, run `python3 scripts/generate-pstack-harness-trees.py` from the repository root and commit the result. ci fails while the generated copy is out of date.
+claude code installs a generated copy of tstack, including this readme and the guide, from [`harness/`](https://github.com/Tialo/skills/tree/main/harness) at the repository root. after you change tstack, run `python3 scripts/generate-tstack-harness.py` from the repository root and commit the result. ci fails while the generated copy is out of date.
 
 ## get started
 
