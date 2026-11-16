@@ -277,12 +277,6 @@ models are configurable too. type [`/setup-tstack`](./skills/setup-tstack/SKILL.
 
 when a default changes, a rule written before the change still pins the old default until you run `/setup-tstack` again. that run replaces the old defaults it recognizes and keeps any other role whose model differs from the default. to drop a pin it does not recognize, delete that role's line or the file first.
 
-## automations
-
-tstack also ships a dormant [benny automation pack](https://github.com/Tialo/skills/tree/main/tstack/automations/benny). benny triages slack issue reports, then reproduces and fixes confirmed bugs with real ui evidence. its files are not registered as slash skills.
-
-to set it up, point cursor at [`FOR_AGENTS.md`](https://github.com/Tialo/skills/blob/main/tstack/automations/benny/FOR_AGENTS.md). setup copies the pack into the target repository at `.cursor/automations/benny/`, enables tstack there for shared skills, and keeps user configuration outside the copied pack. benny runs on cursor automations, so it is cursor-only.
-
 ## license
 
 MIT
