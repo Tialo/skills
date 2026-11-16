@@ -8,20 +8,32 @@ tstack keeps its own editable instructions. An agent reads upstream changes, ada
 
 The repository keeps two records:
 
-- `upstream.sha` at the repository root contains the full `cursor/plugins` commit SHA from the last completed initialization or sync, followed by a newline.
+- `upstream.sha` at the repository root contains the full `cursor/plugins` commit SHA from the last completed initialization or sync, followed by a newline. During first initialization it instead pins the selected source revision; an `Initialization in progress` CHANGELOG entry identifies that state.
 - `CHANGELOG.md` at the repository root records meaningful local changes, upstream syncs, and the reasons for intentional differences.
 
-There is no vendored pstack tree, submodule, patch queue, or separate mapping registry. Read upstream through GitHub or a temporary checkout outside this project. Do not fetch upstream history into this project's Git database. Temporary source material is not part of the deliverable.
+After initialization there is no vendored pstack tree, submodule, patch queue, or separate mapping registry. Read upstream through GitHub or a temporary checkout outside this project. Do not fetch upstream history into this project's Git database. Temporary source material is not part of the deliverable.
 
-The SHA is a review boundary: every relevant change up to that point has been considered. It does not mean every upstream feature was adopted. The latest completed sync or initialization entry in CHANGELOG must agree with `upstream.sha`.
+After initialization, the SHA is a review boundary: every relevant change up to that point has been considered. It does not mean every upstream feature was adopted. The latest completed sync or initialization entry in CHANGELOG must agree with `upstream.sha`.
 
 Track these upstream paths:
 
 ```text
 pstack/**
 scripts/generate-pstack-harness-trees.mjs
+scripts/check-pstack-docs.mjs
+scripts/validate-plugins.mjs
+schemas/**
+.github/workflows/validate-plugins.yml
+.claude-plugin/marketplace.json
+.cursor-plugin/marketplace.json
+cursor-team-kit/skills/deslop/**
+cursor-team-kit/skills/control-cli/**
+cursor-team-kit/skills/control-ui/**
+cursor-team-kit/LICENSE
 harness/pstack/**
 ```
+
+Shared marketplace, schema, validation, and CI files also serve other upstream plugins. Review their changes for their effect on tstack's sources, packaging, and dependencies. Generated harness output remains evidence of source or generator behavior, not a separate initialization progress item.
 
 Inspect other upstream files when a tracked change depends on them. If upstream moves a tracked component or adds a required build dependency elsewhere, update the tracking scope and explain the change in CHANGELOG. Refresh the candidate list for the selected range before finalization so newly relevant commits are accounted for. A relocation must not make future updates disappear from the search.
 
@@ -37,7 +49,7 @@ Use CHANGELOG to reconstruct current intent:
 - A missing file alone does not establish that its removal was intentional. Investigate before skipping its upstream changes.
 - Carry forward explicitly deferred work. It remains outstanding even after the review boundary advances.
 
-If the SHA is absent, initialization has not established a baseline. If the SHA and CHANGELOG disagree, reconcile the interrupted or inconsistent state before starting another range. Do not invent a baseline from a version number or replace it with the latest upstream commit.
+If the SHA is absent or CHANGELOG still marks initialization in progress, initialization has not established a completed baseline. Resume [initialization](initialization.md) and its working records instead of starting a sync. If the SHA and CHANGELOG disagree, reconcile the interrupted or inconsistent state before starting another range. Do not invent a baseline from a version number or replace it with the latest upstream commit.
 
 ## 2. Select one bounded range
 
