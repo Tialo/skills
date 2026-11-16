@@ -6,4 +6,4 @@
 * Removed the Comment Sicko agent and the skill that spawned it.
 * Renamed poteto to tialo.
 * Removed the Cursor-only benny automation pack.
-* Removed the illustrations from `tstack/docs/guide/images/`.
+* Removed the illustrations from `docs/guide/images/`.
