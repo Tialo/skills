@@ -130,7 +130,7 @@ apply prove it works. show me the real output, not the build log.
 /unslop that, no emdashes
 ```
 
-You rarely need more words. You need the right name, and [the principles page](./08-principles.md) is the vocabulary.
+You rarely need more words. You need the right name, and [the principles page](./07-principles.md) is the vocabulary.
 
 ## Get the reply in plain words
 

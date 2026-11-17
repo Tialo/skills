@@ -126,7 +126,7 @@ The Playbooks section of [`tialo-mode`](../tialo-mode/SKILL.md) lists every play
 
 tstack has no planning skill. Claude Code's plan mode works alongside it. For a large or cross-cutting change, `/figure-it-out` designs the run and logs its decisions. For a design question, the Prototype playbook or `/architect` settles it in code first.
 
-Principles are one-rule skills that `/tialo-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 8](../../docs/guide/08-principles.md) lists them.
+Principles are one-rule skills that `/tialo-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 7](../../docs/guide/07-principles.md) lists them.
 
 ## Fix a run that went wrong
 
@@ -140,7 +140,7 @@ Principles are one-rule skills that `/tialo-mode` reads and cites in its replies
 | A `/loop` run moved but finished nothing | `/loop` needs a check that can pass or fail, not a duration. |
 | The reply claims success from a green build | Ask for the real command, flow, stored value, or profile. That's the prove-it-works principle. |
 
-For a run that drifts, [`references/prompting.md`](references/prompting.md) has one-line steers. [Guide page 10](../../docs/guide/10-recipes-and-pitfalls.md) has more pitfalls and the recipes worth copying.
+For a run that drifts, [`references/prompting.md`](references/prompting.md) has one-line steers. [Guide page 9](../../docs/guide/09-recipes-and-pitfalls.md) has more pitfalls and the recipes worth copying.
 
 ## Make tstack my own
 
@@ -149,7 +149,7 @@ For a run that drifts, [`references/prompting.md`](references/prompting.md) has 
 - `/tialo-mode write a skill for <workflow>` runs the authoring playbook. The eval playbook tests a skill change blind.
 - Fix a misbehaving skill in its own PR, not inside the feature work where it went wrong.
 
-[Guide page 9](../../docs/guide/09-make-it-yours.md) covers each of these.
+[Guide page 8](../../docs/guide/08-make-it-yours.md) covers each of these.
 
 ## Reply
 

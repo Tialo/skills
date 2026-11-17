@@ -93,4 +93,4 @@ Read every output yourself before accepting the verdict. If you disagree with th
 
 **Pitfall:** don't edit a skill mid-task because it's misbehaving. Fix it in its own PR and keep the task moving. A skill edit that ships tangled into feature work is invisible to review and impossible to evaluate.
 
-Next: [Recipes and pitfalls](./10-recipes-and-pitfalls.md).
+Next: [Recipes and pitfalls](./09-recipes-and-pitfalls.md).

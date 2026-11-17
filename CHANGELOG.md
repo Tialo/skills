@@ -15,3 +15,4 @@
 * Removed the never-block-on-the-human principle. tialo-mode drops the full-autonomy grant, session overrides, and the rule that external actions proceed without asking.
 * Removed the "Run work while you sleep" guide page and the prompts about stepping away, overnight runs, and parallel cloud agents.
 * Removed the Origin forge and the built-in PR tool from the opening-a-pr playbook; PR commands now use `gh` only.
+* Renumbered guide pages 08–10 to 07–09 after removing the overnight page.
