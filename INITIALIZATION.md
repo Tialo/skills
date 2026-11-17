@@ -42,9 +42,9 @@ adapted:
 * changed tialo-help: dropped overnight, cloud-agent and stepping-away entries from the skill, recipes and prompting
 * changed tialo-mode: opening-a-pr uses only gh (no Origin, no built-in PR tool); session-pickup and pause-safely drop cloud-agent URL, Cursor restart and "going to bed"
 * changed tialo-help: guide page links follow the renumbered guide
+* leave architect as is
 
 todo:
-* architect
 * arena
 * automate-me
 * blast-radius
