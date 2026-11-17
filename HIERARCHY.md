@@ -10,7 +10,6 @@ tstack/skills
 ├── correct
 ├── how
 ├── in-your-own-words
-├── make-bot-ui
 ├── principle-boundary-discipline
 ├── principle-encode-lessons-in-structure
 ├── principle-exhaust-the-design-space
@@ -188,7 +187,6 @@ tstack/skills
     ├── ketchup-video
     ├── maintain-formal-verification-skill
     ├── maintain-verification-skill
-    ├── make-bot-ui
     ├── principle-prove-it-works
     ├── recall
     ├── reflect

@@ -7,3 +7,4 @@
 * Renamed poteto to tialo.
 * Removed the Cursor-only benny automation pack.
 * Removed the illustrations from `docs/guide/images/`.
+* Removed the make-bot-ui skill.

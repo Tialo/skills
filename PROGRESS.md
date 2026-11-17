@@ -18,3 +18,4 @@ adapted:
 * leave correct as is
 * leave how as is
 * leave in-your-own-words as is
+* removed make-bot-ui
