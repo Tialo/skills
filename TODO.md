@@ -3,3 +3,4 @@
 * the author intro at the top of `tstack/README.md` still names poteto.
 * remove notes about models speed
 * make tstack claude first
+* don't do cloud computations
