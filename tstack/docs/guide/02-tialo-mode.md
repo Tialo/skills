@@ -1,6 +1,6 @@
 # Route work through `/tialo-mode`
 
-`/tialo-mode` is the front door. You give it a goal, it matches one of seventeen playbooks, copies that playbook's steps into the todo list, and calls the other skills as the steps need them. In this page you learn what a good prompt looks like, and how little of one you actually need.
+`/tialo-mode` is the front door. You give it a goal, it matches one of sixteen playbooks, copies that playbook's steps into the todo list, and calls the other skills as the steps need them. In this page you learn what a good prompt looks like, and how little of one you actually need.
 
 ## What happens to your prompt
 
@@ -23,7 +23,7 @@ flowchart TD
     J --> K
 ```
 
-The diagram shows the common routes. There are also playbooks for hillclimbing a metric, diagnosing runtime symptoms and captured traces, prototypes, visual parity, authoring and evaluating skills, autonomous runs, opening a PR, session pickup, pausing safely, and worktree cleanup. The [playbook directory](../../skills/tialo-mode/playbooks/) has the full set.
+The diagram shows the common routes. There are also playbooks for hillclimbing a metric, diagnosing runtime symptoms and captured traces, prototypes, visual parity, authoring and evaluating skills, autonomous runs, opening a PR, session pickup, and pausing safely. The [playbook directory](../../skills/tialo-mode/playbooks/) has the full set.
 
 ## Say the goal, not the ceremony
 
@@ -111,14 +111,6 @@ When the work has to stay local, ask for a worktree up front:
 ```
 
 Each task in its own branch and worktree means no agent stomps another's files. Worktrees cost disk and machine resources, so a laptop runs only a handful at once. The [Opening a PR playbook](../../skills/tialo-mode/playbooks/opening-a-pr.md) already works from a worktree for code changes, so mostly you only say this when a specific base or location matters.
-
-Worktrees accumulate. When disk gets tight, ask:
-
-```text
-/tialo-mode what's eating my disk? prune the worktrees that are safe to prune.
-```
-
-The [Worktree cleanup playbook](../../skills/tialo-mode/playbooks/worktree-cleanup.md) classifies every worktree by merge state, uncommitted work, and which chats still touch it. It deletes only what that evidence clears and pauses for your call on anything holding uncommitted work.
 
 ## Leave it running
 

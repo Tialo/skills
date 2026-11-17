@@ -50,7 +50,7 @@ pick `/tialo-mode` from the `/` menu before you type your task, so cursor attach
 
 ### just use [`/tialo-mode`](./skills/tialo-mode/SKILL.md)
 
-this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with seventeen playbooks:
+this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with sixteen playbooks:
 
 ```
 /tialo-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro
@@ -58,7 +58,7 @@ first, then fix and verify.
 ```
 
 <details>
-<summary>the seventeen playbooks</summary>
+<summary>the sixteen playbooks</summary>
 
 | playbook | for |
 |---|---|
@@ -77,7 +77,6 @@ first, then fix and verify.
 | [autonomous run](./skills/tialo-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
 | [session pickup](./skills/tialo-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |
 | [pause safely](./skills/tialo-mode/playbooks/pause-safely.md) | suspend in-flight work cleanly so it can be resumed later. |
-| [worktree cleanup](./skills/tialo-mode/playbooks/worktree-cleanup.md) | reclaim disk by pruning merged or abandoned worktrees and stale ios simulators, safety-gated. |
 | [opening a pr](./skills/tialo-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |
 
 </details>

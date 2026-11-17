@@ -31,3 +31,5 @@ adapted:
 * removed playbooks/babysit, playbooks/shipping, references/bugbot-triage, scripts/watch-pr
 * changed tialo-mode: generic automated-review trigger instead of Bugbot; dropped the babysit section from opening-a-pr
 * changed tialo-help: dropped babysit and shipping entries
+* removed playbooks/worktree-cleanup and scripts/worktree-audit.sh
+* changed tialo-mode: dropped worktree cleanup from the playbook list
