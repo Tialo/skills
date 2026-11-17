@@ -21,7 +21,6 @@ tstack/skills
 ├── principle-make-operations-idempotent
 ├── principle-migrate-callers-then-delete-legacy-apis
 ├── principle-model-the-domain
-├── principle-never-block-on-the-human
 ├── principle-outcome-oriented-execution
 ├── principle-redesign-from-first-principles
 ├── principle-separate-before-serializing-shared-state
@@ -117,7 +116,6 @@ tstack/skills
 │   ├── principle-encode-lessons-in-structure
 │   ├── principle-foundational-thinking
 │   ├── principle-laziness-protocol
-│   ├── principle-never-block-on-the-human
 │   ├── principle-prove-it-works
 │   ├── principle-separate-before-serializing-shared-state
 │   ├── principle-sequence-verifiable-units
@@ -155,7 +153,6 @@ tstack/skills
 │   ├── principle-migrate-callers-then-delete-legacy-apis
 │   ├── principle-minimize-reader-load
 │   ├── principle-model-the-domain
-│   ├── principle-never-block-on-the-human
 │   ├── principle-prove-it-works
 │   ├── principle-redesign-from-first-principles
 │   ├── principle-separate-before-serializing-shared-state
@@ -203,5 +200,5 @@ tstack/skills
     ├── unslop
     └── why
 
-57 skills, 142 dependencies
+56 skills, 140 dependencies
 ```

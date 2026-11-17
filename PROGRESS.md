@@ -33,3 +33,6 @@ adapted:
 * changed tialo-help: dropped babysit and shipping entries
 * removed playbooks/worktree-cleanup and scripts/worktree-audit.sh
 * changed tialo-mode: dropped worktree cleanup from the playbook list
+* removed principle-never-block-on-the-human
+* changed tialo-mode: less autonomy (no full-autonomy grant, no session overrides, external actions pause, broken skill is reported); autonomous-run no longer forbids AskQuestion
+* changed figure-it-out: waits for the user's go before a long run
