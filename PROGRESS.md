@@ -20,3 +20,5 @@ adapted:
 * leave in-your-own-words as is
 * removed make-bot-ui
 * leave sharpen as is
+* leave statechart as is
+* leave tdd as is
