@@ -7,3 +7,4 @@
 * vendor deslop, create-plugin
 * maybe add grill-me skill
 * maybe add improve-codebase-architecture skill
+* transcript paths in session-pickup, eval and recall still point to Cursor (`agent-transcripts/`, `~/.cursor/projects/*/`)

@@ -40,3 +40,4 @@ adapted:
 * changed tialo-mode: figure-it-out routing no longer mentions work the user steps away from
 * changed figure-it-out: dropped "after stepping away" from description and intro
 * changed tialo-help: dropped overnight, cloud-agent and stepping-away entries from the skill, recipes and prompting
+* changed tialo-mode: opening-a-pr uses only gh (no Origin, no built-in PR tool); session-pickup and pause-safely drop cloud-agent URL, Cursor restart and "going to bed"

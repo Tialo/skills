@@ -14,3 +14,4 @@
 * Removed the worktree and simulator cleanup playbook and its `worktree-audit.sh` script from tialo-mode.
 * Removed the never-block-on-the-human principle. tialo-mode drops the full-autonomy grant, session overrides, and the rule that external actions proceed without asking.
 * Removed the "Run work while you sleep" guide page and the prompts about stepping away, overnight runs, and parallel cloud agents.
+* Removed the Origin forge and the built-in PR tool from the opening-a-pr playbook; PR commands now use `gh` only.
