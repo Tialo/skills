@@ -34,8 +34,8 @@ adapted:
 * removed playbooks/worktree-cleanup and scripts/worktree-audit.sh
 * changed tialo-mode: dropped worktree cleanup from the playbook list
 * removed principle-never-block-on-the-human
-* changed tialo-mode: less autonomy (no full-autonomy grant, no session overrides, external actions pause, broken skill is reported); autonomous-run no longer forbids AskQuestion
-* changed figure-it-out: waits for the user's go before a long run
+* changed tialo-mode: dropped the full-autonomy grant, session overrides, "don't block" on broken skills, and external actions without asking; autonomous-run no longer forbids AskQuestion
+* changed figure-it-out: dropped the never-block-on-the-human reference
 * removed docs/guide/07-overnight
 * changed tialo-mode: figure-it-out routing no longer mentions work the user steps away from
 * changed figure-it-out: dropped "after stepping away" from description and intro

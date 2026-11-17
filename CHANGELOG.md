@@ -12,5 +12,5 @@
 * Removed the autopilot-full, autopilot-stack, and orchestrate playbooks from tialo-mode, with the guide sections about PR queues and Cursor Projects.
 * Removed the babysit and shipping playbooks, the Bugbot triage rubric, and the `watch-pr` watcher from tialo-mode.
 * Removed the worktree and simulator cleanup playbook and its `worktree-audit.sh` script from tialo-mode.
-* Removed the never-block-on-the-human principle. tialo-mode now pauses before external actions, drops the full-autonomy grant and session overrides, and reports a broken skill instead of fixing it in a separate PR.
+* Removed the never-block-on-the-human principle. tialo-mode drops the full-autonomy grant, session overrides, and the rule that external actions proceed without asking.
 * Removed the "Run work while you sleep" guide page and the prompts about stepping away, overnight runs, and parallel cloud agents.

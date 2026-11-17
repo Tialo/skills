@@ -38,7 +38,7 @@ two steps:
 1. run [`/setup-tstack`](./skills/setup-tstack/SKILL.md), pick a reasoning budget, and choose which models you want.
 2. use [`/tialo-mode`](./skills/tialo-mode/SKILL.md) whenever you're doing anything that requires rigor.
 
-new here? the [tstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and opening a pr. stuck, or unsure which skill fits? ask [`/tialo-help`](./skills/tialo-help/SKILL.md).
+new here? the [tstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification. stuck, or unsure which skill fits? ask [`/tialo-help`](./skills/tialo-help/SKILL.md).
 
 that's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box the mode splits work by model strength: code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment go to opus 5.5, while the hardest changes go to fable 5.2. the default panel is fable 5.2 / opus 5.5 / gemini 4 carbon. [`/setup-tstack`](./skills/setup-tstack/SKILL.md) changes any of it.
 
