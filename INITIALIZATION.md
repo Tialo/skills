@@ -42,3 +42,52 @@ adapted:
 * changed tialo-help: dropped overnight, cloud-agent and stepping-away entries from the skill, recipes and prompting
 * changed tialo-mode: opening-a-pr uses only gh (no Origin, no built-in PR tool); session-pickup and pause-safely drop cloud-agent URL, Cursor restart and "going to bed"
 * changed tialo-help: guide page links follow the renumbered guide
+
+todo:
+* architect
+* arena
+* automate-me
+* blast-radius
+* create-formal-verification-skill
+* create-verification-skill
+* interrogate
+* ketchup
+* ketchup-video
+* maintain-formal-verification-skill
+* maintain-verification-skill
+* principle-attack-the-premise
+* principle-boundary-discipline
+* principle-exhaust-the-design-space
+* principle-experience-first
+* principle-explain-the-number
+* principle-fix-root-causes
+* principle-foundational-thinking
+* principle-make-operations-idempotent
+* principle-migrate-callers-then-delete-legacy-apis
+* principle-minimize-reader-load
+* principle-model-the-domain
+* principle-outcome-oriented-execution
+* principle-redesign-from-first-principles
+* principle-subtract-before-you-add
+* principle-test-behavior-not-implementation
+* principle-type-system-discipline
+* recall
+* reflect
+* setup-tstack
+* swarm
+* teach
+* technical-writing
+* typescript-best-practices
+* why
+* playbooks/bug-fix
+* playbooks/eval
+* playbooks/feature
+* playbooks/investigation
+* playbooks/opening-a-pr
+* playbooks/pause-safely
+* playbooks/prototype
+* playbooks/refactoring
+* playbooks/runtime-forensics
+* playbooks/session-pickup
+* playbooks/trace-forensics
+* playbooks/visual-parity
