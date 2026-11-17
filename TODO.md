@@ -2,3 +2,4 @@
 * add tstack to `.claude-plugin/marketplace.json` with `"source": "./harness/claude-code"`: docs now say `/plugin install tstack@tialo`, which does not resolve yet
 * the author intro at the top of `tstack/README.md` still names poteto.
 * remove notes about models speed
+* make tstack claude first
