@@ -5,3 +5,5 @@
 * make tstack claude first
 * don't do cloud computations
 * vendor deslop, create-plugin
+* maybe add grill-me skill
+* maybe add improve-codebase-architecture skill

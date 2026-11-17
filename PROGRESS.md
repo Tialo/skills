@@ -19,3 +19,4 @@ adapted:
 * leave how as is
 * leave in-your-own-words as is
 * removed make-bot-ui
+* leave sharpen as is
