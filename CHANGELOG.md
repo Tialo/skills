@@ -8,3 +8,4 @@
 * Removed the Cursor-only benny automation pack.
 * Removed the illustrations from `docs/guide/images/`.
 * Removed the make-bot-ui skill.
+* Removed the multi-phase-plan playbook and its `check-plan.mjs` checker from tialo-mode; tialo-help and the design guide now point to Claude Code's plan mode and figure-it-out.

@@ -98,13 +98,13 @@ Writing the tutorial first forces the caller's view. You describe the API to a h
 
 ## Plan after the design settles
 
-tstack has no planning skill, on purpose. When you do want a written plan, ask for it once the design is settled:
+tstack has no planning skill, on purpose. When you do want a written plan, use Claude Code's plan mode once the design is settled:
 
 ```text
 /tialo-mode turn this design into a plan. small verifiable PRs, each with its own verification steps.
 ```
 
-The [Multi-phase plan playbook](../../skills/tialo-mode/playbooks/multi-phase-plan.md) settles any remaining open questions by prototype, then writes one section per PR, each ending in proof that the change works. A passing test suite alone doesn't count as that proof. The plan is the deliverable. The playbook doesn't implement it, and it names which execution playbook should run it next.
+Ask for one section per PR, each ending in proof that the change works. A passing test suite alone doesn't count as that proof. For a large or cross-cutting change, [`/figure-it-out`](../../skills/figure-it-out/SKILL.md) designs the run and logs its decisions.
 
 For a migration, state the bar in the prompt:
 

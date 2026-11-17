@@ -22,3 +22,6 @@ adapted:
 * leave sharpen as is
 * leave statechart as is
 * leave tdd as is
+* removed playbooks/multi-phase-plan and scripts/check-plan
+* changed tialo-mode: dropped multi-phase-plan from the playbook list
+* changed tialo-help: planning now points to plan mode and figure-it-out

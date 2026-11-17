@@ -128,7 +128,7 @@ Playbooks are step lists inside `/tialo-mode`, not skills, so they have no slash
 
 Without `/tialo-mode`, a phrase such as "babysit this pr" can start Cursor's own skill for the same job instead. The Playbooks section of [`tialo-mode`](../tialo-mode/SKILL.md) lists every playbook and when it applies. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers opening, babysitting, and landing a PR.
 
-tstack has no planning skill. Cursor's Plan Mode works alongside it. For work that spans phases or stacked PRs, asking `/tialo-mode` for a plan runs the [Multi-phase plan playbook](../tialo-mode/playbooks/multi-phase-plan.md), which writes the plan and doesn't implement it. For a design question, the Prototype playbook or `/architect` settles it in code first.
+tstack has no planning skill. Claude Code's plan mode works alongside it. For a large or cross-cutting change, `/figure-it-out` designs the run and logs its decisions. For a design question, the Prototype playbook or `/architect` settles it in code first.
 
 Principles are one-rule skills that `/tialo-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 8](../../docs/guide/08-principles.md) lists them.
 

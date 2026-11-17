@@ -87,7 +87,6 @@ morning.
 | [autopilot-stack](./skills/tialo-mode/playbooks/autopilot-stack.md) | autopilot-full without the merge. build and verify prs for the operator to review and land, stacking a pr only on a pr it builds on. |
 | [session pickup](./skills/tialo-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |
 | [pause safely](./skills/tialo-mode/playbooks/pause-safely.md) | suspend in-flight work cleanly so it can be resumed later. |
-| [multi-phase plan](./skills/tialo-mode/playbooks/multi-phase-plan.md) | work that spans phases or stacked PRs. |
 | [worktree cleanup](./skills/tialo-mode/playbooks/worktree-cleanup.md) | reclaim disk by pruning merged or abandoned worktrees and stale ios simulators, safety-gated. |
 | [opening a pr](./skills/tialo-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |
 
@@ -177,8 +176,6 @@ perf:              /tialo-mode a big list takes a second or two to load even tho
 feature:           /tialo-mode build a small feature behind a feature flag. verify it really works.
 prototype:         /tialo-mode build two prototypes of the markdown renderer so we can compare.
                    spawn an agent for each.
-multi-phase:       /tialo-mode open source these skills as a plugin. nothing internal leaks, work
-                   in a temp dir, show me the dependency graph first.
 overnight run:     /tialo-mode i'm going to bed. land the stack even if ci flakes. i want
                    everything merged by morning.
 babysit:           /tialo-mode check on pr 123. anything outstanding?
