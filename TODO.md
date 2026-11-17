@@ -4,3 +4,4 @@
 * remove notes about models speed
 * make tstack claude first
 * don't do cloud computations
+* vendor deslop, create-plugin

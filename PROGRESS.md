@@ -12,3 +12,4 @@ adapted:
 * leave playbooks/hillclimb as is
 * leave playbooks/authoring-a-skill as is
 * leave playbooks/autonomous-run as is
+* leave benchmark-checklist as is
