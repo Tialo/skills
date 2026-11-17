@@ -38,7 +38,7 @@ two steps:
 1. run [`/setup-tstack`](./skills/setup-tstack/SKILL.md), pick a reasoning budget, and choose which models you want.
 2. use [`/tialo-mode`](./skills/tialo-mode/SKILL.md) whenever you're doing anything that requires rigor.
 
-new here? the [tstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/tialo-help`](./skills/tialo-help/SKILL.md).
+new here? the [tstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and opening a pr. stuck, or unsure which skill fits? ask [`/tialo-help`](./skills/tialo-help/SKILL.md).
 
 that's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box the mode splits work by model strength: code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment go to opus 5.5, while the hardest changes go to fable 5.2. the default panel is fable 5.2 / opus 5.5 / gemini 4 carbon. [`/setup-tstack`](./skills/setup-tstack/SKILL.md) changes any of it.
 
@@ -167,9 +167,8 @@ prototype:         /tialo-mode build two prototypes of the markdown renderer so 
                    spawn an agent for each.
 visual parity:     /tialo-mode the row spacing is too tall when this flag is on. the second image
                    is correct. repro and fix until it matches.
-figure it out:     /tialo-mode i'm stepping away. migrate every caller from the synchronous store
-                   to the new async one, keeping behavior identical. i want to trust it was done
-                   right when i'm back.
+figure it out:     /tialo-mode migrate every caller from the synchronous store to the new async
+                   one, keeping behavior identical. log your decisions so i can review them.
 how:               /how do we cancel runs? do we have an n+1 when we look up every run to cancel?
 why:               /why is this feature flag not on yet?
 architect:         design this instrumentation to be high signal with no false positives. /architect

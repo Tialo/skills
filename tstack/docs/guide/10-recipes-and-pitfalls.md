@@ -114,14 +114,6 @@ The fix lands in the repo as architecture, a type, a lint, or a test, so the nex
 
 You get an answer, a prompt to send, and a link to the source. Nothing runs until you send that prompt.
 
-## Keep a run honest while you're away
-
-```text
-im going to bed, keep going autonomously until every fixture passes. do not stop. keep a decision log i can audit in the morning.
-```
-
-The full contract is on the [overnight page](./07-overnight.md). The short form works once the task and finish condition are already in the conversation.
-
 ## Redirect a drifting run
 
 Steering prompts are one line:

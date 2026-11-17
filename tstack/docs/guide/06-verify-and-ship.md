@@ -131,4 +131,4 @@ A counterexample in model terms convinces you. The PM or designer who owns the b
 
 The [Opening a PR playbook](../../skills/tialo-mode/playbooks/opening-a-pr.md) works from a worktree, rebases the work into small ordered commits, cleans the diff, unslops the prose, and returns the PR link. Five narrow PRs beat one fat one, and stacked follow-ups beat a growing branch.
 
-Next: [Run work while you sleep](./07-overnight.md).
+Next: [Steer with principle names](./08-principles.md).

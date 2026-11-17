@@ -36,3 +36,7 @@ adapted:
 * removed principle-never-block-on-the-human
 * changed tialo-mode: less autonomy (no full-autonomy grant, no session overrides, external actions pause, broken skill is reported); autonomous-run no longer forbids AskQuestion
 * changed figure-it-out: waits for the user's go before a long run
+* removed docs/guide/07-overnight
+* changed tialo-mode: figure-it-out routing no longer mentions work the user steps away from
+* changed figure-it-out: dropped "after stepping away" from description and intro
+* changed tialo-help: dropped overnight, cloud-agent and stepping-away entries from the skill, recipes and prompting

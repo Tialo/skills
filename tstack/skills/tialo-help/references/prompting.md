@@ -35,9 +35,8 @@ A prompt states the intent and the check for done. The playbook supplies the ste
 - "do it", "continue", and "keep going until done" are whole prompts once the chat holds the task.
 - Start with "new task" when the subject changes. Otherwise the mode treats the message as the next step.
 
-## Before stepping away
+## Before a long run
 
-- Say "im going to bed" or "im stepping away" so the agent stops asking.
 - Write done as checks every iteration can run, and give `/loop` that predicate.
 - Ask for a fresh worktree off a named base.
 - Pre-answer what the agent would stop for, such as "don't ask me before committing".
