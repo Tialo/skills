@@ -27,7 +27,7 @@ in claude code:
 
 claude code leaves auto-update off for third-party marketplaces, so tstack stays on the version you installed. to turn it on, run `/plugin`, open the **marketplaces** tab, select `tialo`, and choose **enable auto-update**. to update once by hand, run `claude plugin update tstack@tialo`.
 
-claude code prefixes plugin commands and agents, so `/tialo-mode` is `/tstack:tialo-mode`. the [claude code adapter](./docs/harness/claude-code.md) maps every other cursor name. in claude code, `/tstack:setup-tstack` writes your model choices to `~/.claude/rules/tstack-models.md`, and a step that needs a cursor-only feature, such as bugbot or automations, is skipped with a one-line note.
+claude code prefixes plugin commands and agents, so `/tialo-mode` is `/tstack:tialo-mode`. the [claude code adapter](./docs/harness/claude-code.md) maps every other cursor name. in claude code, `/tstack:setup-tstack` writes your model choices to `~/.claude/rules/tstack-models.md`, and a step that needs a cursor-only feature, such as automations, is skipped with a one-line note.
 
 claude code installs a generated copy of tstack, including this readme and the guide, from [`harness/`](https://github.com/Tialo/skills/tree/main/harness) at the repository root. after you change tstack, run `python3 scripts/generate-tstack-harness.py` from the repository root and commit the result. ci fails while the generated copy is out of date.
 
@@ -50,20 +50,15 @@ pick `/tialo-mode` from the `/` menu before you type your task, so cursor attach
 
 ### just use [`/tialo-mode`](./skills/tialo-mode/SKILL.md)
 
-this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with twenty-three playbooks:
+this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with seventeen playbooks:
 
 ```
 /tialo-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro
 first, then fix and verify.
 ```
 
-```
-/tialo-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by
-morning.
-```
-
 <details>
-<summary>the twenty-three playbooks</summary>
+<summary>the seventeen playbooks</summary>
 
 | playbook | for |
 |---|---|
@@ -79,8 +74,6 @@ morning.
 | [visual parity](./skills/tialo-mode/playbooks/visual-parity.md) | pixel-exact ui equivalence between two implementations. |
 | [authoring a skill](./skills/tialo-mode/playbooks/authoring-a-skill.md) | writing or editing a SKILL.md. |
 | [eval](./skills/tialo-mode/playbooks/eval.md) | test how a skill or prompt change affects agent behavior, blinded. |
-| [babysit](./skills/tialo-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |
-| [shipping](./skills/tialo-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |
 | [autonomous run](./skills/tialo-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
 | [session pickup](./skills/tialo-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |
 | [pause safely](./skills/tialo-mode/playbooks/pause-safely.md) | suspend in-flight work cleanly so it can be resumed later. |
@@ -173,9 +166,6 @@ perf:              /tialo-mode a big list takes a second or two to load even tho
 feature:           /tialo-mode build a small feature behind a feature flag. verify it really works.
 prototype:         /tialo-mode build two prototypes of the markdown renderer so we can compare.
                    spawn an agent for each.
-overnight run:     /tialo-mode i'm going to bed. land the stack even if ci flakes. i want
-                   everything merged by morning.
-babysit:           /tialo-mode check on pr 123. anything outstanding?
 visual parity:     /tialo-mode the row spacing is too tall when this flag is on. the second image
                    is correct. repro and fix until it matches.
 figure it out:     /tialo-mode i'm stepping away. migrate every caller from the synchronous store
@@ -252,7 +242,7 @@ a few things `tialo-mode` references but doesn't bundle:
 
 - `/deslop` and the `deslop` skill ship in the `cursor-team-kit` plugin.
 - `control-cli` (for CLIs and TUIs) and `control-ui` (for browser, Electron, web) ship in `cursor-team-kit` too.
-- `/create-skill` is a cursor built-in. cursor also ships a built-in `/autopilot` that watches a pr. inside `tialo-mode`, pr-status requests go to the [babysit playbook](./skills/tialo-mode/playbooks/babysit.md) instead.
+- `/create-skill` is a cursor built-in.
 
 install `cursor-team-kit` alongside tstack if you want the full set.
 

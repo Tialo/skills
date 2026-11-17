@@ -28,3 +28,6 @@ adapted:
 * removed playbooks/autopilot-full, playbooks/autopilot-stack, playbooks/orchestrate
 * changed tialo-mode: dropped orchestrate routing and autopilot-owner rules from opening-a-pr and babysit
 * changed tialo-help: dropped orchestrate and autopilot entries
+* removed playbooks/babysit, playbooks/shipping, references/bugbot-triage, scripts/watch-pr
+* changed tialo-mode: generic automated-review trigger instead of Bugbot; dropped the babysit section from opening-a-pr
+* changed tialo-help: dropped babysit and shipping entries

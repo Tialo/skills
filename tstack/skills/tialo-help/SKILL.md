@@ -43,7 +43,7 @@ Installing changes nothing until the user invokes a skill. Only `/setup-tstack` 
 
 If cost is the worry, say where the tokens go and how to spend fewer. tstack spends extra tokens on subagents and review panels. Rerun `/setup-tstack` and pick a smaller budget or cheaper models. A role set to `auto` or `inherit-parent` runs on the chat's model, which saves tokens when the chat runs on Auto or a cheaper model. A shorter panel list runs fewer subagents, one for each entry. Save `/tialo-mode` for work that needs rigor.
 
-tstack is built for Cursor, and it also installs in Claude Code with `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. There, each command takes a `tstack:` prefix, such as `/tstack:tialo-mode`. The [Claude Code adapter](../../docs/harness/claude-code.md) maps the Cursor names, and a step that needs a Cursor-only feature, such as Bugbot or Automations, is skipped with a one-line note.
+tstack is built for Cursor, and it also installs in Claude Code with `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. There, each command takes a `tstack:` prefix, such as `/tstack:tialo-mode`. The [Claude Code adapter](../../docs/harness/claude-code.md) maps the Cursor names, and a step that needs a Cursor-only feature, such as Automations, is skipped with a one-line note.
 
 Other tools can read the skills, because they use the Agent Skills format. But most workflow skills, including `/tialo-mode`, `/how`, and `/teach`, spawn Cursor subagents, some with per-role models, and Custom Modes and `/loop` are Cursor features, so those parts may not work there.
 
@@ -118,13 +118,11 @@ Not in tstack:
 
 Playbooks are step lists inside `/tialo-mode`, not skills, so they have no slash command. Inside `/tialo-mode`, describing the task picks one, and these phrases name one directly:
 
-- "babysit this pr" or "check on pr 123" runs Babysit. It drives the PR to merge-ready and stops there. It doesn't merge unless the user asks to merge, land, or ship.
-- "land the stack" runs Shipping.
 - "take over this branch" runs Session pickup.
 - "pause safely" runs Pause safely.
 - "run the eval playbook" runs Eval.
 
-Without `/tialo-mode`, a phrase such as "babysit this pr" can start Cursor's own skill for the same job instead. The Playbooks section of [`tialo-mode`](../tialo-mode/SKILL.md) lists every playbook and when it applies. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers opening, babysitting, and landing a PR.
+The Playbooks section of [`tialo-mode`](../tialo-mode/SKILL.md) lists every playbook and when it applies. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers verification and opening a PR.
 
 tstack has no planning skill. Claude Code's plan mode works alongside it. For a large or cross-cutting change, `/figure-it-out` designs the run and logs its decisions. For a design question, the Prototype playbook or `/architect` settles it in code first.
 

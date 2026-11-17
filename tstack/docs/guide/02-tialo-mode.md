@@ -1,6 +1,6 @@
 # Route work through `/tialo-mode`
 
-`/tialo-mode` is the front door. You give it a goal, it matches one of twenty-three playbooks, copies that playbook's steps into the todo list, and calls the other skills as the steps need them. In this page you learn what a good prompt looks like, and how little of one you actually need.
+`/tialo-mode` is the front door. You give it a goal, it matches one of seventeen playbooks, copies that playbook's steps into the todo list, and calls the other skills as the steps need them. In this page you learn what a good prompt looks like, and how little of one you actually need.
 
 ## What happens to your prompt
 
@@ -23,7 +23,7 @@ flowchart TD
     J --> K
 ```
 
-The diagram shows the common routes. There are also playbooks for hillclimbing a metric, diagnosing runtime symptoms and captured traces, prototypes, visual parity, authoring and evaluating skills, autonomous runs, opening a PR, babysitting a PR or stack to merge-ready, shipping a verified stack, session pickup, pausing safely, and worktree cleanup. The [playbook directory](../../skills/tialo-mode/playbooks/) has the full set.
+The diagram shows the common routes. There are also playbooks for hillclimbing a metric, diagnosing runtime symptoms and captured traces, prototypes, visual parity, authoring and evaluating skills, autonomous runs, opening a PR, session pickup, pausing safely, and worktree cleanup. The [playbook directory](../../skills/tialo-mode/playbooks/) has the full set.
 
 ## Say the goal, not the ceremony
 
