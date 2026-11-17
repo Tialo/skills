@@ -25,3 +25,6 @@ adapted:
 * removed playbooks/multi-phase-plan and scripts/check-plan
 * changed tialo-mode: dropped multi-phase-plan from the playbook list
 * changed tialo-help: planning now points to plan mode and figure-it-out
+* removed playbooks/autopilot-full, playbooks/autopilot-stack, playbooks/orchestrate
+* changed tialo-mode: dropped orchestrate routing and autopilot-owner rules from opening-a-pr and babysit
+* changed tialo-help: dropped orchestrate and autopilot entries
