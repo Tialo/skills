@@ -87,7 +87,5 @@ adapted:
 * leave teach as is
 * leave playbooks/trace-forensics as is
 * leave playbooks/visual-parity as is
-
-todo:
-* automate-me
-* setup-tstack
+* leave setup-tstack as is
+* leave automate-me as is
