@@ -4,7 +4,7 @@
 * remove notes about models speed
 * make tstack claude first
 * don't do cloud computations
-* vendor deslop, create-plugin
+* vendor deslop, create-skill
 * maybe add grill-me skill
 * maybe add improve-codebase-architecture skill
 * transcript paths in session-pickup, eval and recall still point to Cursor (`agent-transcripts/`, `~/.cursor/projects/*/`)
