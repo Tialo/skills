@@ -10,3 +10,5 @@
 * transcript paths in session-pickup, eval and recall still point to Cursor (`agent-transcripts/`, `~/.cursor/projects/*/`)
 * right now this plugin is built around cursor ability to use different model vendors, which is not the case in codex/claude code
 * fix recall for claude code architecture
+* reflect should not edit local skills, but remote skills in Tialo/skills (or local, it should be configured by setup-tstack)
+* make setup-tstack choose models for skills

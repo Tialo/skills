@@ -71,23 +71,23 @@ adapted:
 * leave playbooks/prototype as is
 * removed typescript-best-practices and its tialo-help entry
 * changed principle-type-system-discipline and its tialo-mode entry to cover optionally typed code
+* leave principle-migrate-callers-then-delete-legacy-apis as is
+* leave principle-minimize-reader-load as is
+* leave playbooks/refactoring as is
+* leave create-formal-verification-skill as is
+* leave create-verification-skill as is
+* leave maintain-formal-verification-skill as is
+* leave maintain-verification-skill as is
+* leave principle-outcome-oriented-execution as is
+* leave principle-test-behavior-not-implementation as is
+* leave reflect as is
+* leave swarm as is
+* leave playbooks/runtime-forensics as is
+* leave playbooks/session-pickup as is
+* leave teach as is
+* leave playbooks/trace-forensics as is
+* leave playbooks/visual-parity as is
 
 todo:
 * automate-me
-* create-formal-verification-skill
-* create-verification-skill
-* maintain-formal-verification-skill
-* maintain-verification-skill
-* principle-migrate-callers-then-delete-legacy-apis
-* principle-minimize-reader-load
-* principle-outcome-oriented-execution
-* principle-test-behavior-not-implementation
-* reflect
 * setup-tstack
-* swarm
-* teach
-* playbooks/refactoring
-* playbooks/runtime-forensics
-* playbooks/session-pickup
-* playbooks/trace-forensics
-* playbooks/visual-parity
