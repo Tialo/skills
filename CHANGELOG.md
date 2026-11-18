@@ -16,3 +16,4 @@
 * Removed the "Run work while you sleep" guide page and the prompts about stepping away, overnight runs, and parallel cloud agents.
 * Removed the Origin forge and the built-in PR tool from the opening-a-pr playbook; PR commands now use `gh` only.
 * Renumbered guide pages 08–10 to 07–09 after removing the overnight page.
+* Removed `typescript-best-practices`. Shared skills support external type checkers or manual type analysis when the compiler does not check types.

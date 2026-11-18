@@ -64,20 +64,16 @@ tstack/skills
 ├── principle-sequence-verifiable-units
 │   ├── principle-build-the-lever
 │   └── principle-prove-it-works
+├── principle-type-system-discipline
+│   ├── principle-boundary-discipline
+│   └── principle-encode-lessons-in-structure
 ├── reflect
 │   ├── principle-encode-lessons-in-structure
 │   └── tialo-mode
-├── typescript-best-practices
-│   ├── principle-boundary-discipline
-│   └── principle-type-system-discipline
 ├── principle-build-the-lever
 │   ├── principle-encode-lessons-in-structure
 │   ├── principle-laziness-protocol
 │   └── principle-prove-it-works
-├── principle-type-system-discipline
-│   ├── principle-boundary-discipline
-│   ├── principle-encode-lessons-in-structure
-│   └── typescript-best-practices
 ├── recall
 │   ├── automate-me
 │   ├── tialo-mode
@@ -196,9 +192,8 @@ tstack/skills
     ├── teach
     ├── technical-writing
     ├── tialo-mode
-    ├── typescript-best-practices
     ├── unslop
     └── why
 
-56 skills, 140 dependencies
+54 skills, 135 dependencies
 ```

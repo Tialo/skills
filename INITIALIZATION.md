@@ -15,7 +15,7 @@ adapted:
 * leave benchmark-checklist as is
 * leave playbooks/perf-issue as is
 * leave bro as is
-* leave correct as is
+* changed correct: clarified how to check types without compiler support
 * leave how as is
 * leave in-your-own-words as is
 * removed make-bot-ui
@@ -61,7 +61,7 @@ adapted:
 * leave principle-attack-the-premise as is
 * leave playbooks/investigation as is
 * leave playbooks/pause-safely as is
-* leave principle-boundary-discipline as is
+* changed principle-boundary-discipline: clarified how to check internal types without compiler support
 * leave principle-exhaust-the-design-space as is
 * leave principle-experience-first as is
 * leave principle-explain-the-number as is
@@ -69,6 +69,8 @@ adapted:
 * leave recall as is
 * leave principle-make-operations-idempotent as is
 * leave playbooks/prototype as is
+* removed typescript-best-practices and its tialo-help entry
+* changed principle-type-system-discipline and its tialo-mode entry to cover optionally typed code
 
 todo:
 * automate-me
@@ -80,12 +82,10 @@ todo:
 * principle-minimize-reader-load
 * principle-outcome-oriented-execution
 * principle-test-behavior-not-implementation
-* principle-type-system-discipline
 * reflect
 * setup-tstack
 * swarm
 * teach
-* typescript-best-practices
 * playbooks/refactoring
 * playbooks/runtime-forensics
 * playbooks/session-pickup
