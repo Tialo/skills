@@ -43,49 +43,49 @@ adapted:
 * changed tialo-mode: opening-a-pr uses only gh (no Origin, no built-in PR tool); session-pickup and pause-safely drop cloud-agent URL, Cursor restart and "going to bed"
 * changed tialo-help: guide page links follow the renumbered guide
 * leave architect as is
+* leave principle-subtract-before-you-add as is
+* leave principle-redesign-from-first-principles as is
+* leave arena as is
+* leave why as is
+* leave blast-radius as is
+* leave interrogate as is
+* leave playbooks/bug-fix as is
+* leave playbooks/eval as is
+* leave principle-model-the-domain as is
+* leave playbooks/feature as is
+* leave ketchup as is
+* leave ketchup-video as is
+* leave playbooks/opening-a-pr as is
+* leave technical-writing as is
+* leave principle-fix-root-causes as is
+* leave principle-attack-the-premise as is
+* leave playbooks/investigation as is
+* leave playbooks/pause-safely as is
+* leave principle-boundary-discipline as is
+* leave principle-exhaust-the-design-space as is
+* leave principle-experience-first as is
+* leave principle-explain-the-number as is
+* leave principle-foundational-thinking as is
+* leave recall as is
+* leave principle-make-operations-idempotent as is
+* leave playbooks/prototype as is
 
 todo:
-* arena
 * automate-me
-* blast-radius
 * create-formal-verification-skill
 * create-verification-skill
-* interrogate
-* ketchup
-* ketchup-video
 * maintain-formal-verification-skill
 * maintain-verification-skill
-* principle-attack-the-premise
-* principle-boundary-discipline
-* principle-exhaust-the-design-space
-* principle-experience-first
-* principle-explain-the-number
-* principle-fix-root-causes
-* principle-foundational-thinking
-* principle-make-operations-idempotent
 * principle-migrate-callers-then-delete-legacy-apis
 * principle-minimize-reader-load
-* principle-model-the-domain
 * principle-outcome-oriented-execution
-* principle-redesign-from-first-principles
-* principle-subtract-before-you-add
 * principle-test-behavior-not-implementation
 * principle-type-system-discipline
-* recall
 * reflect
 * setup-tstack
 * swarm
 * teach
-* technical-writing
 * typescript-best-practices
-* why
-* playbooks/bug-fix
-* playbooks/eval
-* playbooks/feature
-* playbooks/investigation
-* playbooks/opening-a-pr
-* playbooks/pause-safely
-* playbooks/prototype
 * playbooks/refactoring
 * playbooks/runtime-forensics
 * playbooks/session-pickup
