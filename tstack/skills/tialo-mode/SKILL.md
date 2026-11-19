@@ -19,13 +19,13 @@ The remaining triggers live only here:
 - First message → restate the user's goal and the smallest change that meets it, then proceed. Open each subagent brief, PR `## Why`, and final report with the goal.
 - Starting any agent → the first line of its kickoff is `Read <path>/worker.md before anything else.`, with `<path>` the absolute path of this skill's folder. Keep the rest of the kickoff to the goal and the task, plus this file's absolute path for a `tialo-agent`.
 - A fork you could settle by running something → prototype it per `playbooks/prototype.md` instead of asking.
-- Code → name the data shape first. Across a function boundary → **architect**. Fan-out → **swarm**. Bakeoff → **arena**. Contested design → **interrogate**.
-- Prose, your reply included → **unslop**. Docs, PR descriptions, commit messages → **technical-writing**.
-- Before commit → `/deslop` from the `cursor-team-kit` plugin.
-- Shipping UI / IDE / CLI → `control-ui` or `control-cli` from `cursor-team-kit`.
-- A number you measured → **benchmark-checklist**.
+- Code → name the data shape first. Across a function boundary → [**architect**](../architect/SKILL.md). Fan-out → [**swarm**](../swarm/SKILL.md). Bakeoff → [**arena**](../arena/SKILL.md). Contested design → [**interrogate**](../interrogate/SKILL.md).
+- Prose, your reply included → [**unslop**](../unslop/SKILL.md). Docs, PR descriptions, commit messages → [**technical-writing**](../technical-writing/SKILL.md).
+- Before commit → the external `deslop` skill (harness: skills).
+- Shipping UI / IDE / CLI → the external `control-ui` or `control-cli` skill (harness: skills).
+- A number you measured → [**benchmark-checklist**](../benchmark-checklist/SKILL.md).
 - Bot review comments → judge each on its merits.
-- Long multi-step work → **show-me-your-work**.
+- Long multi-step work → [**show-me-your-work**](../show-me-your-work/SKILL.md).
 
 ## Principles
 
@@ -57,7 +57,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 - **Prove It Works.** After a task, before declaring done. Verify against the real artifact, not a proxy or "it compiles".
 - **Fix Root Causes.** Debugging. Trace each symptom back to the first place the system went wrong and fix it there. A guard is a fix only when the state it handles is legitimate.
-- **Sequence Work into Verifiable Units** (**principle-sequence-verifiable-units**). Multi-step work (sweeps, migrations, runs of similar edits) and how you stack commits and PRs. Break work into small units that each end in a check, verify each before the next, and order delivery so the sequence proves itself.
+- **Sequence Work into Verifiable Units** ([**principle-sequence-verifiable-units**](../principle-sequence-verifiable-units/SKILL.md)). Multi-step work (sweeps, migrations, runs of similar edits) and how you stack commits and PRs. Break work into small units that each end in a check, verify each before the next, and order delivery so the sequence proves itself.
 - **Test Behavior, Not Implementation.** Writing, changing, or keeping a test. Assert what the code's users can observe, so the test fails when that behavior breaks and keeps passing when only the internals change.
 - **Explain the Number.** Apply before you measure, and before you trust, report, or act on a number you measured (a speedup, a regression, a throughput, a latency, or an eval result). Find what limits it, and rule out that it measured something other than the work you think.
 
@@ -79,19 +79,15 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 ## Subagents
 
-**Use `subagent_type: "tialo-agent"` for any subagent you spawn directly inside a playbook step.** The chat that receives `/tialo-mode` runs the playbook itself. Routed workflow skills (`interrogate`, `swarm`) set their own `subagent_type`. Respect it.
+**Use the `tialo-agent` subagent for any subagent you spawn directly inside a playbook step** (harness: subagents). The chat that receives `/tialo-mode` runs the playbook itself. Routed workflow skills (`interrogate`, `swarm`) set their own `subagent_type`. Respect it.
 
-**Defaults for every `Task` call.** `run_in_background: true`, agent mode (readonly strips MCP), file pointers not inlined context, and an explicit model per role. `/setup-tstack` writes `~/.cursor/rules/tstack-models.mdc`, whose per-role lines override the defaults below and the role models in the routed skills (`arena`, `swarm`, `interrogate`). A role with no line keeps its default. A line of `inherit-parent` or `auto` runs the role on the parent model, so omit `model` and spawn `generalPurpose`, because `tialo-agent` defaults to Opus 5.5. Each code playbook reads its own line (`feature, refactoring`, `bug-fix`, `perf-issue`, or `hillclimb`), prose and judgment read `judgment and prose`, and trivial mechanical edits read `swarm workers`. If the rule has no `# defaults: 3` line, an older setup wrote it. Keep honoring its lines, and tell the user once per session to rerun `/setup-tstack`.
+**Defaults for every subagent call.** Background, agent mode (read-only strips MCP), file pointers not inlined context, and an explicit model per role (harness: subagents). `/setup-tstack` writes the tstack rule, whose per-role lines set the models here and in the routed skills (`arena`, `swarm`, `interrogate`). A role with no line runs on the parent model. Each code playbook reads its own line (`feature, refactoring`, `bug-fix`, `perf-issue`, or `hillclimb`), prose and judgment read `judgment and prose`, and trivial mechanical edits read `swarm workers`.
 
-- Code, prose, and judgment: `claude-opus-5-5-xhigh-fast`.
-- Trivial mechanical edits: `claude-opus-5-5-high-fast`.
-- Diverse review and design panels: one runner each on `claude-fable-5-2-high`, `claude-opus-5-5-high-fast`, and `gemini-4-neon-high`.
+**The `escalation` model is an exception.** With no `escalation` line, never escalate. It runs outside a panel only when the user named it for this task or two runs of the same brief on the role's own model failed its check. Say which. Difficulty alone never qualifies.
 
-**Fable 5.2 is an exception.** It runs outside a panel only when the user named it for this task or two Opus 5.5 xhigh runs of the same brief failed its check. Say which. Difficulty alone never qualifies.
+**Match the model to the job.** Start from the role's line, keep its family, and set the level the job needs. The `/setup-tstack` budget sets each role's starting level. Panel seats keep their listed level. Raise any other role one step, up to xhigh, for the hardest or subtlest work, lower it one step for judgment, and two or more steps for routine work. No role runs above xhigh. Verification always runs on the `swarm workers` model. If the harness rejects a model, never pass it again. Fall back to the role's line, then the calling skill's fallback, then the closest valid model of the same family, then omit `model`. Say so.
 
-**Match the model to the job.** Start from the role's line or default, keep its family, and set the level the job needs. The `/setup-tstack` budget sets each role's starting level. Panel seats keep their listed level. Raise any other role one step, up to xhigh, for the hardest or subtlest work, lower it one step for judgment, and two or more steps for routine work. No role runs above xhigh. Opus 5.5 always runs its `-fast` slug. Verification always runs on the `swarm workers` model, `claude-opus-5-5-high-fast` by default. A Gemini seat never runs above `gemini-4-neon-high`. If the Task tool rejects a slug, never pass it again. Fall back to the role's line or default, then the calling skill's fallback, then the closest valid slug of the same family, then omit `model`. Say so.
-
-You own every subagent's work. Review the diff and write your own summary. A second opinion is the same prompt on another vendor's model.
+You own every subagent's work. Review the diff and write your own summary. A second opinion is the same prompt on a model from another family.
 
 **Fresh subagents by default.** Give a fix round, a follow-up, or a retry to a fresh subagent with the original brief, every later directive, and the prior agent's report and branch. Resume an existing subagent only when the work needs state that lives in it and is costly to move: its checkout, its uncommitted changes, or a process it still runs.
 
@@ -101,6 +97,6 @@ Write short declarative sentences with no long dash and no colon as a connector.
 
 ## Playbooks
 
-Match the task to a playbook and open its steps at `playbooks/<title>.md`, with the title in kebab case. Copy its steps into the todolist tool first. Large or cross-cutting work, or a task no playbook fits, routes to the **figure-it-out** skill.
+Match the task to a playbook and open its steps at `playbooks/<title>.md`, with the title in kebab case. Copy its steps into the todolist tool first. Large or cross-cutting work, or a task no playbook fits, routes to the [**figure-it-out**](../figure-it-out/SKILL.md) skill.
 
 Investigation, Bug fix, Perf issue, Hillclimb, Runtime forensics, Trace forensics, Feature, Refactoring, Prototype, Visual parity, Authoring a skill, Eval, Autonomous run, Session pickup, Pause safely, Opening a PR.

@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Answer the user's question about tstack, hand them a prompt they can send, and link the file the answer came from. For a help question, don't start the work. The user asked how, and a tstack run spends real tokens, so let them send the prompt.
 
-A message that asks for work, such as "use tstack to fix this bug", is not a help question. Read [`tialo-mode`](../tialo-mode/SKILL.md), do the work under it, and mention once that a Custom Mode keeps it on.
+A message that asks for work, such as "use tstack to fix this bug", is not a help question. Read [`tialo-mode`](../tialo-mode/SKILL.md), do the work under it, and mention once how to keep it on (harness: interaction).
 
 This file maps questions to the skills and guide pages that hold the answers. Those files own the details. Read the file you route to before you quote it, and trust it when it disagrees with this map. The links here point into the installed plugin, which the user may not be able to open, so give the user the file's public copy: `https://github.com/Tialo/skills/blob/main/tstack/` followed by its path.
 
@@ -24,40 +24,32 @@ Infer the need from the message and the conversation. A named situation, such as
 
 Check the state that changes the answer, and mention it only when it does:
 
-- No `~/.cursor/rules/tstack-models.mdc` means `/setup-tstack` hasn't run for this user, so every role uses its default model.
+- No tstack rule in your context means `/setup-tstack` hasn't run in this project, so every role runs on the chat's model.
 - No `verify-*` skill or other app harness in the project means agents have no scripted way to drive the app. Mention `/create-verification-skill` when the question is about proving a change works.
 - No formal verification skill in the project means no property is checked past what tests reach. Mention `/create-formal-verification-skill` when the question is about a race, an invariant, or another case tests rarely hit. When one exists and the code it covers changed after the commit it records as last in sync, mention `/maintain-formal-verification-skill` if the question touches that code.
 
 When the model rule is missing and it matters, ask whether the user wants to pick a model for each role and a reasoning budget now. It matters when the user is new, the question is about setup or cost, or the answer depends on which models run. Ask at most once per chat. If the need is also unclear, ask both questions together. Offer two choices:
 
 - Now: give them `/setup-tstack` to type, and answer their question too.
-- Later: answer their question, and add one line saying every role keeps its default model until they run `/setup-tstack`.
+- Later: answer their question, and add one line saying every role runs on the chat's model until they run `/setup-tstack`.
 
 ## Get set up
 
-1. Install with `/add-plugin tstack` in chat, or from Customize in the sidebar.
-2. Run [`/setup-tstack`](../setup-tstack/SKILL.md). It asks for a reasoning budget, maps a model to each role, and writes a rule. The rule applies to new chats. Then it offers once each to generate a verification skill and a formal verification skill for the project, unless the project already has one.
+1. Install tstack as the [README](../../README.md#install) says for their harness.
+2. Run [`/setup-tstack`](../setup-tstack/SKILL.md). It asks for a reasoning budget, maps a model to each role, and writes a project rule. The rule applies to new chats in that project. Then it offers once each to generate a verification skill and a formal verification skill for the project, unless the project already has one.
 3. Start a real task with `/tialo-mode`, a goal, and a check that can pass or fail.
 
 Installing changes nothing until the user invokes a skill. Only `/setup-tstack` loads from the user's words. The [README](../../README.md) and [guide page 1](../../docs/guide/01-setup.md) have the details. Offer to word their first prompt with them, per [`references/prompting.md`](references/prompting.md).
 
-If cost is the worry, say where the tokens go and how to spend fewer. tstack spends extra tokens on subagents and review panels. Rerun `/setup-tstack` and pick a smaller budget or cheaper models. A role set to `auto` or `inherit-parent` runs on the chat's model, which saves tokens when the chat runs on Auto or a cheaper model. A shorter panel list runs fewer subagents, one for each entry. Save `/tialo-mode` for work that needs rigor.
+If cost is the worry, say where the tokens go and how to spend fewer. tstack spends extra tokens on subagents and review panels. Rerun `/setup-tstack` and pick a smaller budget or cheaper models. A role with no line runs on the chat's model, which saves tokens when the chat runs on a cheaper model. A shorter panel list runs fewer subagents, one for each entry. Save `/tialo-mode` for work that needs rigor.
 
-tstack is built for Cursor, and it also installs in Claude Code with `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. There, each command takes a `tstack:` prefix, such as `/tstack:tialo-mode`. The [Claude Code adapter](../../docs/harness/claude-code.md) maps the Cursor names, and a step that needs a Cursor-only feature, such as Automations, is skipped with a one-line note.
-
-Other tools can read the skills, because they use the Agent Skills format. But most workflow skills, including `/tialo-mode`, `/how`, and `/teach`, spawn Cursor subagents, some with per-role models, and Custom Modes and `/loop` are Cursor features, so those parts may not work there.
+tstack skills use harness-neutral terms. The [`harness`](../harness/SKILL.md) skill maps them for each harness it has a folder for. Other tools can read the skills, because they use the Agent Skills format. They get no mapping, so the agent maps each term itself.
 
 ## Start a task with `/tialo-mode`
 
 `/tialo-mode` matches the task to a playbook, copies the playbook's steps into the todo list, and runs the other skills as the steps need them. A good prompt states the goal and how to tell it's done. It doesn't list skills, because a hand-written sequence tends to drop or reorder steps the playbook would keep. Read [`references/prompting.md`](references/prompting.md) before you help word one. [Guide page 2](../../docs/guide/02-tialo-mode.md) has examples.
 
-Whether `/tialo-mode` stays on depends on how the user starts it:
-
-- Enter on `/tialo-mode` attaches the skill to one message. It fades as the chat moves on.
-- Option+Enter on Mac or Alt+Enter on Windows, or Use as Mode from the skill entry, makes it a Custom Mode. It stays in context every turn until the user exits the mode, and it stays out of casual turns.
-- Cursor's docs list Custom Modes in the Agents Window and the CLI. Elsewhere, start each new task with `/tialo-mode`.
-
-Link [Cursor's skills docs](https://cursor.com/docs/skills) when this comes up. Mid-chat, "new task" makes the mode match a fresh playbook. `/tialo-mode` already uses `tialo-agent` for the subagents its playbook steps spawn. To get the same style from a subagent of your own, spawn it with `subagent_type: "tialo-agent"`.
+Whether `/tialo-mode` stays on depends on the harness and how the user starts it (harness: interaction). Mid-chat, "new task" makes the mode match a fresh playbook. `/tialo-mode` already uses `tialo-agent` for the subagents its playbook steps spawn. To get the same style from a subagent of your own, spawn `tialo-agent` (harness: subagents).
 
 ## Pick a skill
 
@@ -77,7 +69,7 @@ The default answer is `/tialo-mode`, which runs most of the others when its step
 | Know what a small diff could break outside itself | [`/blast-radius`](../blast-radius/SKILL.md) |
 | Settle types and module shape before code that crosses a function boundary | [`/architect`](../architect/SKILL.md) |
 | Get several attempts at one brief, merged into the best one | [`/arena`](../arena/SKILL.md) |
-| Run parallel checks over slices, or race workers, as cloud agents | [`/swarm`](../swarm/SKILL.md) |
+| Run parallel checks over slices, or race workers, each in its own checkout | [`/swarm`](../swarm/SKILL.md) |
 | Have different models review a diff and try to break it | [`/interrogate`](../interrogate/SKILL.md) |
 | Fix a bug test-first when a cheap local test exists | [`/tdd`](../tdd/SKILL.md) |
 | Clean AI tells out of prose | [`/unslop`](../unslop/SKILL.md) |
@@ -109,8 +101,7 @@ Close calls:
 
 Not in tstack:
 
-- `/deslop`, `control-cli`, and `control-ui` ship in the `cursor-team-kit` plugin.
-- `/loop` and `/create-skill` are Cursor built-ins.
+- `/loop` and the skill-authoring tool come with the harness.
 
 ## Playbooks and principles
 
@@ -122,7 +113,7 @@ Playbooks are step lists inside `/tialo-mode`, not skills, so they have no slash
 
 The Playbooks section of [`tialo-mode`](../tialo-mode/SKILL.md) lists every playbook. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers verification and opening a PR.
 
-tstack has no planning skill. Claude Code's plan mode works alongside it. For a large or cross-cutting change, `/figure-it-out` designs the run and logs its decisions. For a design question, the Prototype playbook or `/architect` settles it in code first.
+tstack has no planning skill. The harness's plan mode works alongside it. For a large or cross-cutting change, `/figure-it-out` designs the run and logs its decisions. For a design question, the Prototype playbook or `/architect` settles it in code first.
 
 Principles are one-rule skills that `/tialo-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 7](../../docs/guide/07-principles.md) lists them.
 
@@ -130,7 +121,7 @@ Principles are one-rule skills that `/tialo-mode` reads and cites in its replies
 
 | Symptom | Fix |
 |---|---|
-| The mode stopped applying after a few turns | It was started with Enter. Start it as a Custom Mode, or start each task with `/tialo-mode`. |
+| The mode stopped applying after a few turns | It was not kept on. Keep it on (harness: interaction), or start each task with `/tialo-mode`. |
 | A question got treated as the next step of the last task | Say "new task", or say the turn doesn't need the mode. |
 | A new model choice had no effect | The rule from `/setup-tstack` applies to new chats. Start one. |
 | Runs cost more than expected | See the cost paragraph under Get set up. |

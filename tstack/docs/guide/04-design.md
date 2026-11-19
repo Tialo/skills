@@ -20,7 +20,7 @@ The design isn't sacred once code starts. If the same workaround keeps coming ba
 /arena take my prompt to the arena verbatim. i want to compare their proposals with yours.
 ```
 
-[`/arena`](../../skills/arena/SKILL.md) is the general tool underneath. N subagents attempt the same design or code brief in parallel, each writing to its own worktree or directory. A read-only judge from a different model vendor scores every candidate against a rubric. When no model from another vendor can run, the coordinator skips the judge and picks the base itself. The coordinator reads each candidate end to end, picks a base, grafts in the best ideas from the losers, and verifies the result.
+[`/arena`](../../skills/arena/SKILL.md) is the general tool underneath. N subagents attempt the same design or code brief in parallel, each writing to its own worktree or directory. A read-only judge on a different model family scores every candidate against a rubric. When no judge from another family can run, the coordinator skips the judge and picks the base itself. The coordinator reads each candidate end to end, picks a base, grafts in the best ideas from the losers, and verifies the result.
 
 ```mermaid
 flowchart LR
@@ -92,7 +92,7 @@ Writing the tutorial first forces the caller's view. You describe the API to a h
 
 ## Plan after the design settles
 
-tstack has no planning skill, on purpose. When you do want a written plan, use Claude Code's plan mode once the design is settled:
+tstack has no planning skill, on purpose. When you do want a written plan, use your harness's plan mode once the design is settled:
 
 ```text
 /tialo-mode turn this design into a plan. small verifiable PRs, each with its own verification steps.

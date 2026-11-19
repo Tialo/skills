@@ -88,7 +88,7 @@ continue
 keep going until done
 ```
 
-Short works because the playbook holds the structure, and a Custom Mode keeps `/tialo-mode` in context on every turn. [Set up tstack](./01-setup.md#run-your-first-task) shows how to start one. Your words carry the intent, and the skill carries the rigor.
+Short works because the playbook holds the structure. [Set up tstack](./01-setup.md#run-your-first-task) shows how to keep `/tialo-mode` on across turns. Your words carry the intent, and the skill carries the rigor.
 
 ## Switch tasks with "new task"
 
