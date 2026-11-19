@@ -2,6 +2,7 @@
 name: tialo-agent
 description: Delegate subagent for code-writing and helper tasks spawned during a `/tialo-mode` run. Use for delegates, not as the runner for `/tialo-mode` itself. Spawn a fresh `tialo-agent` for each new task, and resume one only in the strict cases that tialo-mode's Subagents section names. Reads the `tialo-mode` skill's `SKILL.md` in full before any work, including its inline Principles index. Substituting `generalPurpose` skips that read and drifts.
 is_background: true
+model: claude-opus-5-5-xhigh-fast
 ---
 
 # Tialo subagent

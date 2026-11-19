@@ -13,6 +13,7 @@
 * Removed the babysit and shipping playbooks, the Bugbot triage rubric, and the `watch-pr` watcher from tialo-mode.
 * Removed the worktree and simulator cleanup playbook and its `worktree-audit.sh` script from tialo-mode.
 * Removed the never-block-on-the-human principle. tialo-mode drops the full-autonomy grant, session overrides, and the rule that external actions proceed without asking.
+* Adapted `tialo-mode/worker.md` so subagents make reversible implementation choices themselves and return decisions that need the user's preference or approval to the parent agent.
 * Removed the "Run work while you sleep" guide page and the prompts about stepping away, overnight runs, and parallel cloud agents.
 * Removed the Origin forge and the built-in PR tool from the opening-a-pr playbook; PR commands now use `gh` only.
 * Renumbered guide pages 08–10 to 07–09 after removing the overnight page.

@@ -8,7 +8,7 @@ tstack skills use Cursor names. In Claude Code, read this file once per session,
 | --- | --- |
 | `Task` | `Agent` |
 | `AskQuestion` | `AskUserQuestion`. In `-p` mode it is absent, so ask in plain text. |
-| Open a todolist | Use `TodoWrite` if the session offers it. Otherwise keep the list in your reply and update it at each phase. |
+| Open a todolist, or copy steps into the todolist tool | Use `TodoWrite` if the session offers it. Otherwise keep the list in your reply and update it at each phase. |
 | Run another tstack skill (`/name` or "the **name** skill") | `Read` `<tstack>/skills/<name>/SKILL.md` and follow it. The `Skill` tool refuses most tstack skills. When you tell the user to type it, write `/tstack:<name>`. |
 | `Grep`, `Glob` | `Bash` with `rg` when the session has no `Grep` or `Glob`. |
 
@@ -18,6 +18,7 @@ tstack skills use Cursor names. In Claude Code, read this file once per session,
 | --- | --- |
 | `subagent_type: generalPurpose` | `subagent_type: "general-purpose"` |
 | `tialo-agent` | `tstack:tialo-agent` |
+| The `model:` line in `tialo-agent`'s file | It holds a Cursor slug. Pass `model` and `effort` on every `Agent` call that spawns `tstack:tialo-agent`, mapped with the Models table, so that slug never reaches the API. |
 | `readonly: true` | `subagent_type: "Explore"`. It keeps `Bash`, so the brief also says "do not edit files", and you check `git status` afterward. |
 | `readonly: false` | `general-purpose`. It keeps the session's MCP servers. |
 | `environment: "cloud"` | `isolation: "worktree"`. Name the branch or commit the worker checks out. |
@@ -42,7 +43,7 @@ tstack skills use Cursor names. In Claude Code, read this file once per session,
 Claude Code loads every `.md` file in `~/.claude/rules/` into each new session, so `setup-tstack` writes its rule there. Follow its steps with these changes:
 
 - Detect. The detected models are the `model` values that the `Agent` tool schema lists, each with an effort from its `effort` values. Write a real model as `<model> <effort>`, such as `opus xhigh`. The effort is the last token, so the budget step works as written.
-- Defaults. Map each default slug with the rows above: `claude-opus-5-5-xhigh` is `opus xhigh`, `claude-opus-5-5-high-fast` is `opus high`, `claude-fable-5-2-max` is `fable max`, and `gemini-4-carbon-high` is `inherit-parent`.
+- Defaults. Map each default slug with the rows above: `claude-opus-5-5-xhigh-fast` is `opus xhigh`, `claude-opus-5-5-high-fast` is `opus high`, `claude-fable-5-2-high` is `fable high`, and `gemini-4-neon-high` is `inherit-parent`.
 - Write. Write `~/.claude/rules/tstack-models.md` with no frontmatter, then the comment lines, the `# budget` line, and one line per role from step 5. Overwrite the whole file. Never put the role lines in `CLAUDE.md` or `AGENTS.md`.
 
 ## Paths
