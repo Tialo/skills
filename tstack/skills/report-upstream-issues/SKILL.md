@@ -1,6 +1,7 @@
 ---
 name: report-upstream-issues
 description: "Use when you are about to work around a third-party dependency (library, CLI, runtime, base image, CI action, SaaS API or SDK) that misbehaves, contradicts its docs, or lacks something: patching, pinning or downgrading, casting or suppressing type/lint errors, adding retries or sleeps, monkeypatching, or rewriting code to avoid an API. Checks whether upstream already knows or fixed it, marks the workaround with a removal TODO, and reports to the user. Also use when the user asks to draft an upstream issue or continue investigating a dependency bug."
+disable-model-invocation: true
 ---
 
 # Report Upstream Issues
@@ -21,21 +22,23 @@ The user's task still comes first. This skill adds a short detour when you hit t
 
 Reference paths are relative to this file's directory.
 
+A subagent runs only [At discovery](#at-discovery). It returns each record, its `FINDINGS` and the marker's `path:line` in its report. The agent that answers the user runs [At the end](#at-the-end) over every report it received.
+
 ## At discovery
 
 Toward dependencies, mid-task work is **read-only**: no installs, builds or version changes. The cheap check on latest waits for the end of the task. Anything beyond it waits for the user's approval.
 
-1. **Attribute.** Confirm the fault is the dependency's: its docs or source for the installed version contradict what it does, the docs are wrong or silent, or it lacks something reasonable. If the project is misusing a correct API, fix the project's code and leave this skill.
+1. **Attribute.** Trace the symptom to the first wrong decision (the [**fix-root-causes**](../principle-fix-root-causes/SKILL.md) principle skill) and confirm it is the dependency's: its docs or source for the installed version contradict what it does, the docs are wrong or silent, or it lacks something reasonable. If the project is misusing a correct API, fix the project's code and leave this skill.
    Report problems that made you change code or approach (a workaround, pin, cast, suppression, avoided API, or code you wrote because the docs misled you). Lesser oddities get one footnote line at the end.
 2. **Security test.** Could this let someone cross a trust boundary: read or change data they shouldn't, run code, bypass auth, leak secrets, or crash the service with untrusted input? If plausibly yes, read `references/security.md` now. Its wording rules cover every comment, commit message and file you write from here on.
-3. **Record** the problem, using the harness's task list if it has one. The record must be enough for a fresh agent to start from:
+3. **Record** the problem as a todolist item. The record must be enough for a fresh agent to start from:
    - the dependency, its ecosystem and installed version, and the API involved;
    - a one-line symptom and the exact error text;
    - the call that triggers it, with its inputs;
    - the project root, and how to run code in the project's environment (e.g. `.venv/bin/python`, `npm exec`).
-4. **Search upstream.** Start a subagent with a fresh context window (not a fork of this conversation). Give it the absolute path of `references/investigate.md`, the record, and the security flag from step 2. It returns a `FINDINGS` block. Use one subagent per problem; several can run in parallel. If the harness has no subagents or doesn't allow spawning them, read `investigate.md` and do the search yourself.
+4. **Search upstream.** Spawn a fresh read-only subagent (harness: subagents), not a fork of this conversation, so the pages it reads stay out of your context (the [**guard-the-context-window**](../principle-guard-the-context-window/SKILL.md) principle skill). Give it the absolute path of `references/investigate.md`, the record, and the security flag from step 2. It returns a `FINDINGS` block. Use one subagent per problem; several can run in parallel. Pick each subagent's reasoning level for the job, per the Subagents section of the [**tialo-mode**](../tialo-mode/SKILL.md) skill. If you can't spawn subagents, read `investigate.md` and do the search yourself.
    Skip the search for a private dependency with no public source or tracker (an internal company package, say). Searching would leak internal names to public search engines. Mark it and report it as "internal, not searched".
-5. **Work around it.** When nothing short of upgrading a dependency fixes it, write the workaround without asking. Keep it small and in one place. An available upgrade gets proposed at the end; you leave versions as they are.
+5. **Work around it.** When nothing short of upgrading a dependency fixes it, write the workaround without asking. Keep it small and in one place, at the boundary where the project calls the dependency (the [**boundary-discipline**](../principle-boundary-discipline/SKILL.md) principle skill). An available upgrade gets proposed at the end; you leave versions as they are.
 6. **Mark it** at the workaround, picking the first form that fits the findings:
 
    ```text
@@ -55,7 +58,7 @@ Then return to the user's task.
 Before your final message:
 
 1. **Collect** the problems from this task: your records, plus any `TODO(upstream)` markers you added during this task. Markers left by earlier sessions are not new findings. Report each problem once. A problem found later, for example while continuing an investigation, goes through steps 1 to 4 of discovery and gets its own `FINDINGS` before you report it, since a search for a different problem doesn't count.
-2. **Check on latest.** For each problem, start a fresh-context subagent with the absolute path of `references/reproduce.md`, the record and the `FINDINGS`. It applies its own cost gates and returns a `REPRO` block. Without subagents, follow `reproduce.md` yourself. If the result changes what is known, rewrite the TODO in the matching form.
+2. **Check on latest.** For each problem, spawn a fresh general worker (harness: subagents) with the absolute path of `references/reproduce.md`, the record and the `FINDINGS`. It applies its own cost gates and returns a `REPRO` block. Without subagents, follow `reproduce.md` yourself. If the result changes what is known, rewrite the TODO in the matching form.
 3. **Disclose**, after your normal summary of the task, one block per problem:
 
    ```markdown

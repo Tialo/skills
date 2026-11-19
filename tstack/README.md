@@ -99,7 +99,7 @@ in cursor, to keep [`/tialo-mode`](./skills/tialo-mode/SKILL.md) on across turns
 
 ## skills
 
-[`/tialo-mode`](./skills/tialo-mode/SKILL.md) runs most of these for you when a step needs them (`why`, `architect`, `arena`, `swarm`, `interrogate`, `unslop`, `technical-writing`, `tdd`, and the principles). the table below is for when you want one directly:
+[`/tialo-mode`](./skills/tialo-mode/SKILL.md) runs most of these for you when a step needs them (`why`, `architect`, `arena`, `swarm`, `interrogate`, `unslop`, `technical-writing`, `tdd`, `report-upstream-issues`, and the principles). the table below is for when you want one directly:
 
 ```
 /how do we cancel runs? do we have an n+1 when we look up every run to cancel?
@@ -136,6 +136,7 @@ in cursor, to keep [`/tialo-mode`](./skills/tialo-mode/SKILL.md) on across turns
 | [`/teach`](./skills/teach/SKILL.md) | you want to actually understand a change or subsystem, not just have it summarized. runs how + why and weaves one plain explanation, built up diagram by diagram. |
 | [`/tdd`](./skills/tdd/SKILL.md) | you're fixing a bug and there's a cheap local test path. write the failing test first, then the fix. |
 | [`/benchmark-checklist`](./skills/benchmark-checklist/SKILL.md) | you ran a benchmark or measured a speedup or regression. vets the number (limiter, tuning, errors, repeat runs, end-to-end relevance) before you report or act on it. |
+| [`/report-upstream-issues`](./skills/report-upstream-issues/SKILL.md) | an agent worked around a dependency bug. checks whether upstream knows or fixed it, and drafts an issue if not. |
 | [`/figure-it-out`](./skills/figure-it-out/SKILL.md) | no bundled playbook fits. designs a rigorous, auditable playbook for the task. |
 | [`/show-me-your-work`](./skills/show-me-your-work/SKILL.md) | you want a reviewable decision trail. logs decisions to a tsv you can commit. |
 | [`/create-verification-skill`](./skills/create-verification-skill/SKILL.md) | your project has no scripted way to prove app behavior. generates a project-local verify skill with a feature map, for any language or platform. |

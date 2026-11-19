@@ -36,6 +36,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 - `/interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the Dropped list too.
 - `/create-formal-verification-skill prove <property> holds in <module>, even when <steps> interleave or retry.` After merges or refactors in that code: `/maintain-formal-verification-skill`.
 - `/swarm check every package under <dir> against its check script. one worker per package. one report.`
+- `/report-upstream-issues look into the TODO(upstream) in <file>. is it fixed upstream yet? draft an issue if nobody reported it.`
 - `/tialo-mode open the pr. small ordered commits, evidence in the description.`
 
 ## Away and back

@@ -76,6 +76,16 @@ GIT_UNSAFE_PER_SUB = {
                "--edit", "--rename-section", "--remove-section"},
 }
 
+# gh subcommands that only read. --web opens a browser and --cache writes files.
+GH_READ_ONLY = {
+    "search": {"issues", "prs", "code", "commits", "repos"},
+    "issue": {"view"},
+    "pr": {"view"},
+}
+GH_UNSAFE = {"-w", "--web", "--cache"}
+# Options that make gh api send a request body, which also switches it to POST.
+GH_API_UNSAFE = GH_UNSAFE | {"-f", "-F", "--field", "--raw-field", "--input"}
+
 SED_PRINT = re.compile(r"^(\d+|\$)?(,(\d+|\$))?p$")
 
 SEPARATORS = {";", "&", "&&", "|", "||", "\n", "|&"}
@@ -252,6 +262,37 @@ def check_git(args):
         raise Unsafe("git config can only be read (--get, --list)")
 
 
+def check_gh(args):
+    sub = args[0] if args else ""
+    if sub == "api":
+        rest, forbidden = args[1:], GH_API_UNSAFE
+    elif sub in GH_READ_ONLY and len(args) > 1 and args[1] in GH_READ_ONLY[sub]:
+        rest, forbidden = args[2:], GH_UNSAFE
+    else:
+        raise Unsafe("only gh search, gh issue view, gh pr view and gh api GET are allowed")
+    for i, a in enumerate(rest):
+        if a == "--":
+            break
+        if option_hits(a, forbidden):
+            raise Unsafe("gh %s %s writes files, opens a browser or sends data" % (sub, a))
+        if sub != "api":
+            continue
+        if a == "graphql":
+            raise Unsafe("gh api graphql always sends a POST")
+        if a in ("-X", "--method"):
+            method = rest[i + 1] if i + 1 < len(rest) else ""
+        elif a.startswith("--method="):
+            method = a.split("=", 1)[1]
+        elif a.startswith("-X"):
+            method = a[2:].lstrip("=")
+        elif a.startswith("-") and not a.startswith("--") and "X" in a:
+            raise Unsafe("gh api -X must stand alone")
+        else:
+            continue
+        if method.upper() != "GET":
+            raise Unsafe("gh api allows only the GET method")
+
+
 def check_program(words):
     program, args = words[0], words[1:]
     if re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", program):
@@ -260,6 +301,8 @@ def check_program(words):
         raise Unsafe("programs must be called by name, not by path")
     if program == "git":
         return check_git(args)
+    if program == "gh":
+        return check_gh(args)
     if program == "env" and not args:
         return  # bare env only prints; env CMD would run CMD
     if program == "sed":

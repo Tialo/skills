@@ -8,7 +8,7 @@ Here's what you'll learn:
 2. [Route work through `/tialo-mode`](./02-tialo-mode.md). Give it a goal and watch it pick a playbook.
 3. [Understand the code](./03-understand.md). A read-only investigation, then `/how`, `/why`, `/teach`, and `/recall` before you edit anything.
 4. [Design the change](./04-design.md). `/architect`, `/arena`, `/swarm`, `/interrogate`, prototypes, and plans before code locks in a shape.
-5. [Build and clean the change](./05-build-and-clean.md). The build playbooks, `/tdd`, and `/unslop`.
+5. [Build and clean the change](./05-build-and-clean.md). The build playbooks, `/tdd`, dependency workarounds, and `/unslop`.
 6. [Verify and ship](./06-verify-and-ship.md). Prove behavior on the real app, formally verify what tests rarely reach, vet numbers with `/benchmark-checklist`, then open a focused PR.
 7. [Steer with principle names](./07-principles.md). The 23 names that redirect an agent mid-task.
 8. [Make it yours](./08-make-it-yours.md). Your own mode, `/correct` for repeated mistakes, and how to test a skill change.

@@ -20,6 +20,7 @@ The remaining triggers live only here:
 - Starting any agent → the first line of its kickoff is `Read <path>/worker.md before anything else.`, with `<path>` the absolute path of this skill's folder. Keep the rest of the kickoff to the goal and the task, plus this file's absolute path for a `tialo-agent`.
 - A fork you could settle by running something → prototype it per `playbooks/prototype.md` instead of asking.
 - Code → name the data shape first. Across a function boundary → [**architect**](../architect/SKILL.md). Fan-out → [**swarm**](../swarm/SKILL.md). Bakeoff → [**arena**](../arena/SKILL.md). Contested design → [**interrogate**](../interrogate/SKILL.md).
+- Working around a third-party dependency → [**report-upstream-issues**](../report-upstream-issues/SKILL.md).
 - Prose, your reply included → [**unslop**](../unslop/SKILL.md). Docs, PR descriptions, commit messages → [**technical-writing**](../technical-writing/SKILL.md).
 - Before commit → the external `deslop` skill (harness: skills).
 - Shipping UI / IDE / CLI → the external `control-ui` or `control-cli` skill (harness: skills).

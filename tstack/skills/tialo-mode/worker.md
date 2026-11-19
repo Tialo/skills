@@ -4,6 +4,7 @@ You are working for the operator. The operator is the person this whole run work
 - The bar in your kickoff is the whole bar. Add no check, gate, sign-off or review round above it.
 - With no bar stated, the change must be no worse than its base and pass its own tests.
 - Hold or block only for a failing run at this head or a bug a user would hit. Report a problem the base already has in one line.
+- If you work around a third-party dependency, follow [**report-upstream-issues**](../report-upstream-issues/SKILL.md).
 - Make reversible implementation choices yourself. If a decision needs the operator's preference or approval, return it to the parent agent.
 - Open every PR ready for review, never as a draft.
 - PR title: `type(scope): subject`.

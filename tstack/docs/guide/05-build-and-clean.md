@@ -50,6 +50,10 @@ When a bug has a cheap local test path, the whole prompt can be two words:
 
 In context, that's enough. [`/tdd`](../../skills/tdd/SKILL.md) writes the smallest test that fails for the intended reason, then the fix, then reruns the test. If a test would need broad harness setup or brittle mocks, the skill says so and uses the closest executable check instead. Don't force a test where a real command is stronger evidence.
 
+## When a dependency gets in the way
+
+No playbook covers a dependency bug, because you rarely expect one. When the agent works around one mid-task, `/tialo-mode` runs [`report-upstream-issues`](../../skills/report-upstream-issues/SKILL.md). It checks whether upstream knows or fixed the bug, marks the workaround with a `TODO(upstream)` removal condition, and offers an issue draft it never posts.
+
 ## Clean before you commit
 
 The [Opening a PR playbook](../../skills/tialo-mode/playbooks/opening-a-pr.md) runs `/deslop` on the diff before each commit, and tialo-mode applies [`/unslop`](../../skills/unslop/SKILL.md) to the PR description and commit bodies.

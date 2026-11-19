@@ -60,6 +60,8 @@ Fill the project's template if it has one. Otherwise, in this order:
 - **Workaround:** a short one, if it helps other users.
 - **Notes:** the suspected cause, labelled as inference; and related issues, each with one line on how this differs.
 
+Run the [**unslop**](../../unslop/SKILL.md) skill over the body.
+
 Keep facts and inferences visibly separate. Write for a maintainer with 30 seconds to triage.
 
 **Redact:** include no project code beyond the minimal snippet, and no internal names, paths, hostnames, tokens or data. Swap in generic names.

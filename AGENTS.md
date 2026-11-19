@@ -5,4 +5,5 @@ for pstack -> tstack migration:
 * when removing/changing something please double check that other parts using relying on this are adapted: possible places are playbooks, guides, other skills
 * run `python3 scripts/check-tstack.py` after changing tstack
 * when changing, deleting a skill, fix hierarchy file, add changelog entry, progress entry
+* a changelog entry describes how tstack differs from upstream pstack, not how the change was made
 * its okay to change adpoted in INITIALIZATION.md
