@@ -21,5 +21,4 @@
 * Made tstack harness-agnostic. Skills use harness-neutral terms, and the new `harness` skill maps them for Claude Code and Cursor. Vendored the Cursor-native `deslop`, `control-cli`, and `control-ui`, and removed the separate Claude Code build.
 * `setup-tstack` writes a project rule with the model for each role and the harness options.
 * Added the `report-upstream-issues` skill.
-* Added the `grill-me` skill, adapted from `grilling` in mattpocock/skills. It looks up facts with a read-only subagent, settles forks a run can answer with a prototype, and asks the user only for decisions. `tialo-mode` runs it when the user asks to think a change through.
-* Added the `improve-codebase-architecture` skill, adapted from mattpocock/skills without its glossary and ADR handling. It defines depth, leverage, and locality inline and takes the rest from tstack principles. The picked candidate goes through `grill-me` and alternative interfaces through `architect`, and the Refactoring playbook builds it. Refactoring runs the skill when no target is named.
+* Added the `grill-me` and `improve-codebase-architecture` skills from mattpocock/skills.

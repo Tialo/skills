@@ -10,11 +10,7 @@ The two most common design mistakes are taking the agent's first design and poli
 /tialo-mode we need per-team rate limits on the public api. let's think it through first, grill me.
 ```
 
-[`/grill-me`](../../skills/grill-me/SKILL.md) maps the plan as a tree of decisions and interviews you until every branch is settled. Each round asks every question whose prerequisites are already answered. The questions are numbered, each with the agent's recommended answer, and "yes" accepts it. Answer by number, such as "1 yes, 2 the second option, 3 no, because...". Your answers unblock the next round.
-
-The agent doesn't ask you what it can find out. It looks up facts with a read-only subagent, and it settles forks a prototype can answer by running one. Only preference, scope, and priority reach you. When no question is left, it restates the goal and the settled decisions, and it waits for you to confirm before it builds anything. You can tell it to wrap up at any point.
-
-Use `/grill-me` when the open questions are yours to answer. When they are about the code's shape, `/architect` settles them without you.
+[`/grill-me`](../../skills/grill-me/SKILL.md) interviews you in rounds of numbered questions, each with its recommended answer, so "yes" accepts it. It looks up facts and runs prototypes itself, and asks you only about preference, scope, and priority. It builds nothing until you confirm the restated decisions. When the open questions are about the code's shape, use `/architect` instead.
 
 ## Settle the shape with `/architect`
 
@@ -124,7 +120,7 @@ For a migration, state the bar in the prompt:
 
 You might be wondering whether every change needs this. No. Most changes need none of it. A rough ladder:
 
-- A plan whose open questions are yours to answer, like scope, priorities, or taste, gets `/grill-me` before any design work.
+- Open questions only you can answer get `/grill-me` first.
 - A small, finished change you're unsure about needs `/interrogate` alone.
 - A change that crosses function boundaries or moves ownership earns `/architect`, which brings `/arena` with it when the design is large or contested.
 - A standalone decision where independent attempts would help, like naming, formats, or an algorithm, is `/arena` directly.
