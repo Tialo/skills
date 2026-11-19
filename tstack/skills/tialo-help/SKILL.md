@@ -60,6 +60,7 @@ The default answer is `/tialo-mode`, which runs most of the others when its step
 | Do any non-trivial task with rigor | [`/tialo-mode`](../tialo-mode/SKILL.md) |
 | Check that the agent understood their goal and the problem before it starts | [`/in-your-own-words`](../in-your-own-words/SKILL.md) |
 | Get a prompt rewritten deeper, not bigger, before sending it: what a top professional would add, their raw material and methods, and an outside check. It returns the prompt and doesn't do the task | [`/sharpen`](../sharpen/SKILL.md) |
+| Think a plan or change through before work starts, answering the agent's numbered questions round by round until every decision is settled | [`/grill-me`](../grill-me/SKILL.md) |
 | Know how code works now, or where new code should live | [`/how`](../how/SKILL.md) |
 | Know why code is shaped this way, or where a number came from | [`/why`](../why/SKILL.md) |
 | Understand a change or subsystem, explained plainly | [`/teach`](../teach/SKILL.md) |

@@ -26,6 +26,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 - `/tialo-mode prototype a few options for <feature>. take screenshots or videos for me to compare.`
 - `/tialo-mode we need <feature>. /architect it first, and answer open questions with prototypes. let me review before proceeding.`
+- `/tialo-mode i want to <change>. let's think it through first, grill me.`
 - `/tialo-mode write a tutorial for how i would use <new package> first. then /teach me why it beats the current one.`
 - `ask /arena for a second opinion on this thread and our approach.`
 - `/tialo-mode turn this design into a plan. small verifiable PRs, each with its own verification steps.`

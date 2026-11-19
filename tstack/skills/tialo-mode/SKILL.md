@@ -19,6 +19,7 @@ The remaining triggers live only here:
 - First message → restate the user's goal and the smallest change that meets it, then proceed. Open each subagent brief, PR `## Why`, and final report with the goal.
 - Starting any agent → the first line of its kickoff is `Read <path>/worker.md before anything else.`, with `<path>` the absolute path of this skill's folder. Keep the rest of the kickoff to the goal and the task, plus this file's absolute path for a `tialo-agent`.
 - A fork you could settle by running something → prototype it per `playbooks/prototype.md` instead of asking.
+- The user asks to think it through or to be grilled → [**grill-me**](../grill-me/SKILL.md) before the playbook.
 - Code → name the data shape first. Across a function boundary → [**architect**](../architect/SKILL.md). Fan-out → [**swarm**](../swarm/SKILL.md). Bakeoff → [**arena**](../arena/SKILL.md). Contested design → [**interrogate**](../interrogate/SKILL.md).
 - Working around a third-party dependency → [**report-upstream-issues**](../report-upstream-issues/SKILL.md).
 - Prose, your reply included → [**unslop**](../unslop/SKILL.md). Docs, PR descriptions, commit messages → [**technical-writing**](../technical-writing/SKILL.md).
