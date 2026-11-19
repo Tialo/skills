@@ -1,0 +1,16 @@
+{
+  "name": "tialo",
+  "owner": {
+    "name": "Tialo"
+  },
+  "metadata": {
+    "description": "Tialo's agent plugins."
+  },
+  "plugins": [
+    {
+      "name": "tstack",
+      "source": "tstack",
+      "description": "if you want to go fast, go deep first. tstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence."
+    }
+  ]
+}

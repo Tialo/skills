@@ -14,11 +14,15 @@ fork it. improve it. make it yours. PRs are welcome!
 
 ## install
 
-in cursor:
+in cursor, tstack is not in the cursor marketplace. on a teams or enterprise plan, import `https://github.com/Tialo/skills` as a team marketplace: dashboard → **plugins & mcps** → **team marketplaces** → **add marketplace** → **import from repo**. otherwise install it as a local plugin:
 
 ```bash
-/add-plugin tstack
+git clone https://github.com/Tialo/skills.git tialo-skills
+mkdir -p ~/.cursor/plugins/local
+rsync -a --delete tialo-skills/tstack/ ~/.cursor/plugins/local/tstack/
 ```
+
+then run **developer: reload window**. to update, run `git -C tialo-skills pull` and the `rsync` line again.
 
 in claude code:
 

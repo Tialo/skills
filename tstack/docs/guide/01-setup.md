@@ -4,13 +4,15 @@ In this page you install the plugin, pick which models tstack uses, and run your
 
 ## Install the plugin
 
-In a Cursor chat, run:
+tstack is not in the Cursor Marketplace. On a Teams or Enterprise plan, import `https://github.com/Tialo/skills` as a team marketplace: in the dashboard, open **Plugins & MCPs**, then **Team Marketplaces**, **Add Marketplace**, **Import from Repo**. Otherwise, install it as a local plugin:
 
-```text
-/add-plugin tstack
+```bash
+git clone https://github.com/Tialo/skills.git tialo-skills
+mkdir -p ~/.cursor/plugins/local
+rsync -a --delete tialo-skills/tstack/ ~/.cursor/plugins/local/tstack/
 ```
 
-Cursor confirms the plugin is installed.
+Then run **Developer: Reload Window** and check that tstack's skills appear in **Customize**.
 
 In Claude Code, run `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. Claude Code prefixes plugin commands, so each command in this guide takes a `tstack:` prefix there, such as `/tstack:setup-tstack`.
 
