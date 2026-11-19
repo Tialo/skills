@@ -1,7 +1,6 @@
 * add tstack to `.claude-plugin/marketplace.json` with `"source": "./tstack"`: docs say `/plugin install tstack@tialo`, which does not resolve yet
 * no CI runs `python3 scripts/check-tstack.py` or `claude plugin validate --strict ./tstack`
 * the author intro at the top of `tstack/README.md` still names poteto.
-* maybe add improve-codebase-architecture skill
 * reflect should not edit local skills, but remote skills in Tialo/skills (or local, it should be configured by setup-tstack)
 * check that Cursor accepts `model: inherit` in `tialo-agent` and runs `tialo-agent` without a `model` parameter on the parent model
 * `tstack/plugin.json` uses the agent-plugins schema. It was the generator's input, and nothing builds from it now. Keep or delete it. The version lives in three manifests.

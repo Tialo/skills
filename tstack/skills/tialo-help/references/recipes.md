@@ -20,6 +20,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 - Bug with a cheap test: `/tialo-mode repro <bug> first. if there's a cheap test path, /tdd it. then fix and rerun.`
 - Feature: `/tialo-mode add <behavior>. <current output> stays byte-identical. verify both.`
 - Refactor: `/tialo-mode move <code> into one module, zero behavior change. record the current output first and prove it's unchanged after.`
+- Refactor with no target: `/tialo-mode <area> is painful to change. find what to restructure first.`
 - Perf: `/tialo-mode <operation> takes <time> on <fixture>. trace it, fix the measured cause, show me before and after.`
 
 ## Design and plan

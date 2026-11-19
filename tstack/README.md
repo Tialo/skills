@@ -126,6 +126,7 @@ in cursor, to keep [`/tialo-mode`](./skills/tialo-mode/SKILL.md) on across turns
 | [`/ketchup-video`](./skills/ketchup-video/SKILL.md) | you want the `/ketchup` catch-up as a short subtitled video of slides, with the calls waiting on you as text under it. |
 | [`/blast-radius`](./skills/blast-radius/SKILL.md) | you have a small-looking change and want to know what else it could break, with the one fact it's safe because of proven by running code, not asserted. |
 | [`/architect`](./skills/architect/SKILL.md) | you're about to write code that crosses a function boundary and want the caller's usage, types, and module shape settled first. |
+| [`/improve-codebase-architecture`](./skills/improve-codebase-architecture/SKILL.md) | you want to know where the code is hard to change and what to restructure first. scans recent hot spots for shallow modules, shows candidates in an html report with before and after diagrams, grills you through the one you pick, then builds it with the refactoring playbook. runs when you type it, or when you ask `/tialo-mode` for a refactor with no target. |
 | [`/arena`](./skills/arena/SKILL.md) | you want N parallel attempts at the same thing, then to grab the best parts of each. |
 | [`/swarm`](./skills/swarm/SKILL.md) | you want N parallel workers across different slices or races, then one aggregated report. |
 | [`/interrogate`](./skills/interrogate/SKILL.md) | you have a diff and want different models to try to break it, keeping only findings a run proves. |

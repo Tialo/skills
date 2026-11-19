@@ -22,6 +22,14 @@ A refactoring prompt pins behavior before structure moves:
 /tialo-mode move parsing into one module, zero behavior change. record the current output first and prove it's unchanged after.
 ```
 
+When you know the code hurts but not what to change, say where it hurts:
+
+```text
+/tialo-mode packages/billing is painful to change. find what to restructure first.
+```
+
+With no target named, the Refactoring playbook runs [`/improve-codebase-architecture`](../../skills/improve-codebase-architecture/SKILL.md). It scans the area, or the recent hot spots in git history when you name none, for modules whose interface is nearly as complex as what they hide. It opens an HTML report with before and after diagrams for each candidate and a top pick. You choose one, `/grill-me` settles its open decisions with you, and the playbook builds it against a pinned behavior contract.
+
 A perf prompt states the measurement, not an impression:
 
 ```text
