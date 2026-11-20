@@ -37,7 +37,7 @@ A prompt states the intent and the check for done. The playbook supplies the ste
 
 ## Before a long run
 
-- Write done as checks every iteration can run, and give `/loop` that predicate.
+- Give the loop a finish condition it can check on every iteration (harness: interaction).
 - Ask for a fresh worktree off a named base.
 - Pre-answer what the agent would stop for, such as "don't ask me before committing".
 - Ask for a decision log to audit later.

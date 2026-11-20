@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 ## Start
 
-Open a todolist with one entry per phase before launching anything.
+Open a todo list (harness: interaction) with one entry per phase before launching anything.
 
 1. Frame
 2. Fan out

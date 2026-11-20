@@ -1,5 +1,4 @@
 {
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "tstack",
   "version": "0.2.0",
   "description": "if you want to go fast, go deep first. tstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
@@ -10,6 +9,8 @@
   "homepage": "https://github.com/Tialo/skills/tree/main/tstack",
   "repository": "https://github.com/Tialo/skills",
   "license": "MIT",
+  "skills": "./skills",
+  "hooks": "./skills/harness/codex/hooks/hooks.json",
   "keywords": [
     "tstack",
     "tialo-mode",

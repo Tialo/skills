@@ -2,6 +2,7 @@
 
 | Term | Cursor |
 |---|---|
+| todo list | Use the agent's to-do list to track each step. |
 | structured question | `AskQuestion`, with `allow_multiple: true` for several answers. |
 | repeat until a predicate holds | Cursor's `/loop` command. |
 | wake on an event | A watcher subagent that wakes you on the event, with a long time-based heartbeat as fallback. |

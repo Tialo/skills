@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Arena
 
-Open a todolist with one entry per phase (Frame, Fan out, Cross-judge, Pick, Graft, Verify) before launching anything.
+Open a todo list (harness: interaction) with one entry per phase (Frame, Fan out, Cross-judge, Pick, Graft, Verify) before launching anything.
 
 ## Phase A: Frame
 
@@ -25,7 +25,7 @@ If a candidate produces no output, proceed with N-1 and note the dropout.
 
 ## Phase C: Cross-judge
 
-After all Phase B candidates complete, spawn one read-only judge from the `arena cross-judge pool` line in the tstack rule. The judge is never from the parent's model family (harness: subagents), so use the first entry from another family. If you do not know the parent's model, use the first entry and say that the family check did not run. If the harness rejects a model, use the next such entry, or skip the judge, and say so. While you read in Phase D, the judge scores each candidate, by path label, on each rubric criterion and recommends a base.
+After all Phase B candidates complete, spawn one read-only judge from the `arena cross-judge pool` line in the tstack rule. The judge is never from the parent's model family (harness: subagents), so use the first entry from another family. If the pool has no eligible entry, skip the judge and say why. If you do not know the parent's model, use the first entry and say that the family check did not run. If the harness rejects a model, use the next such entry, or skip the judge, and say so. While you read in Phase D, the judge scores each candidate, by path label, on each rubric criterion and recommends a base.
 
 ## Phase D: Pick a base
 

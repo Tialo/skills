@@ -31,7 +31,7 @@ Toward dependencies, mid-task work is **read-only**: no installs, builds or vers
 1. **Attribute.** Trace the symptom to the first wrong decision (the [**fix-root-causes**](../principle-fix-root-causes/SKILL.md) principle skill) and confirm it is the dependency's: its docs or source for the installed version contradict what it does, the docs are wrong or silent, or it lacks something reasonable. If the project is misusing a correct API, fix the project's code and leave this skill.
    Report problems that made you change code or approach (a workaround, pin, cast, suppression, avoided API, or code you wrote because the docs misled you). Lesser oddities get one footnote line at the end.
 2. **Security test.** Could this let someone cross a trust boundary: read or change data they shouldn't, run code, bypass auth, leak secrets, or crash the service with untrusted input? If plausibly yes, read `references/security.md` now. Its wording rules cover every comment, commit message and file you write from here on.
-3. **Record** the problem as a todolist item. The record must be enough for a fresh agent to start from:
+3. **Record** the problem in the todo list (harness: interaction). The record must be enough for a fresh agent to start from:
    - the dependency, its ecosystem and installed version, and the API involved;
    - a one-line symptom and the exact error text;
    - the call that triggers it, with its inputs;

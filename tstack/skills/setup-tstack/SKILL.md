@@ -24,11 +24,11 @@ Detect the models the topic names. Never write a model you have not confirmed is
 
 ### 2. Load current state
 
-If the rule file exists, read it and treat its budget, options, and role values as the current choices. Otherwise start from the topic's default roles. Drop a line whose role is not in the list above, and tell the user.
+If the project's tstack rule exists, read it and treat its budget, options, and role values as the current choices. Otherwise start from the topic's default roles. Drop a line whose role is not in the list above, and tell the user.
 
 ### 3. Budget, options, map, and confirm
 
-**(a) Ask for a budget and the harness options.** Ask in one structured question round. Offer these three budgets with these exact labels, and name the current budget when the rule records one. With no rule, say that `large` matches the defaults.
+**(a) Ask for a budget and the harness options.** Ask in one structured question round (harness: interaction). Offer these three budgets with these exact labels, and name the current budget when the rule records one. With no rule, say that `large` matches the defaults.
 
 - `large — xhigh reasoning`
 - `medium — high reasoning`
@@ -46,7 +46,7 @@ Every model written must be detected and at `xhigh` or below. If a chosen model 
 
 ### 5. Write the rule
 
-Write the rule file in the topic's shape: the header comment, the `harness` line, the `budget` line with the chosen label and the effort it names, one line per harness option, and one line per role. Overwrite the whole file so re-runs stay idempotent.
+Write the rule file in the topic's shape: the header comment, the `harness` line, the `budget` line with the chosen label and the effort it names, one line per harness option, and one line per role. Replace the previous tstack rule at the location the topic specifies. Preserve surrounding project instructions.
 
 ### 6. Install external skills
 

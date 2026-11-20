@@ -2,6 +2,7 @@
 
 | Term | Cursor |
 |---|---|
+| explicit-only invocation | Set `disable-model-invocation: true` in the skill frontmatter. |
 | project skills folder | `.cursor/skills/`. A skill can sit in a category folder, such as `.cursor/skills/<category>/<name>/SKILL.md`. |
 | personal skills folder | `~/.cursor/skills/` |
 | installed plugin copy | `~/.cursor/plugins/`. Never edit it. |

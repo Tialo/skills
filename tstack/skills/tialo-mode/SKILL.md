@@ -81,9 +81,9 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 ## Subagents
 
-**Use the `tialo-agent` subagent for any subagent you spawn directly inside a playbook step** (harness: subagents). The chat that receives `/tialo-mode` runs the playbook itself. Routed workflow skills (`interrogate`, `swarm`) set their own `subagent_type`. Respect it.
+**Use the `tialo-agent` subagent for any subagent you spawn directly inside a playbook step** (harness: subagents). The chat that receives `/tialo-mode` runs the playbook itself. Routed workflow skills (`interrogate`, `swarm`) specify which kind of worker to use. Follow their choice.
 
-**Defaults for every subagent call.** Background, agent mode (read-only strips MCP), file pointers not inlined context, and an explicit model per role (harness: subagents). `/setup-tstack` writes the tstack rule, whose per-role lines set the models here and in the routed skills (`arena`, `swarm`, `interrogate`). A role with no line runs on the parent model. Each code playbook reads its own line (`feature, refactoring`, `bug-fix`, `perf-issue`, or `hillclimb`), prose and judgment read `judgment and prose`, and trivial mechanical edits read `swarm workers`.
+**Defaults for every subagent call.** Background, agent mode, file pointers not inlined context, and an explicit model per role (harness: subagents). `/setup-tstack` writes the tstack rule, whose per-role lines set the models here and in the routed skills (`arena`, `swarm`, `interrogate`). A role with no line runs on the parent model. Each code playbook reads its own line (`feature, refactoring`, `bug-fix`, `perf-issue`, or `hillclimb`), prose and judgment read `judgment and prose`, and trivial mechanical edits read `swarm workers`.
 
 **The `escalation` model is an exception.** With no `escalation` line, never escalate. It runs outside a panel only when the user named it for this task or two runs of the same brief on the role's own model failed its check. Say which. Difficulty alone never qualifies.
 
@@ -99,6 +99,6 @@ Write short declarative sentences with no long dash and no colon as a connector.
 
 ## Playbooks
 
-Match the task to a playbook and open its steps at `playbooks/<title>.md`, with the title in kebab case. Copy its steps into the todolist tool first. Large or cross-cutting work, or a task no playbook fits, routes to the [**figure-it-out**](../figure-it-out/SKILL.md) skill.
+Match the task to a playbook and open its steps at `playbooks/<title>.md`, with the title in kebab case. Copy its steps into the todo list first (harness: interaction). Large or cross-cutting work, or a task no playbook fits, routes to the [**figure-it-out**](../figure-it-out/SKILL.md) skill.
 
 Investigation, Bug fix, Perf issue, Hillclimb, Runtime forensics, Trace forensics, Feature, Refactoring, Prototype, Visual parity, Authoring a skill, Eval, Autonomous run, Session pickup, Pause safely, Opening a PR.

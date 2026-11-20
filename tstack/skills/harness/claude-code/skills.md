@@ -2,6 +2,7 @@
 
 | Term | Claude Code |
 |---|---|
+| explicit-only invocation | Set `disable-model-invocation: true` in the skill frontmatter. |
 | project skills folder | `.claude/skills/<name>/SKILL.md` |
 | personal skills folder | `~/.claude/skills/<name>/SKILL.md` |
 | installed plugin copy | `~/.claude/plugins/cache/`. Never edit it. |

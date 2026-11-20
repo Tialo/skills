@@ -35,7 +35,9 @@ claude code leaves auto-update off for third-party marketplaces, so tstack stays
 
 claude code prefixes plugin commands and agents, so `/tialo-mode` is `/tstack:tialo-mode`.
 
-the skills use harness-neutral terms. the [`harness`](./skills/harness/SKILL.md) skill maps them for cursor and claude code, one small topic file per area, and a skill reads only the topic its step needs. other harnesses get no mapping, so the agent maps the terms itself.
+in codex, run `codex plugin marketplace add Tialo/skills` and `codex plugin add tstack@tialo`. use `$tstack:setup-tstack` and `$tstack:tialo-mode` for the commands below.
+
+the skills use harness-neutral terms. the [`harness`](./skills/harness/SKILL.md) skill maps them for cursor, claude code, and codex, one small topic file per area, and a skill reads only the topic its step needs. other harnesses get no mapping, so the agent maps the terms itself.
 
 ## get started
 
@@ -46,13 +48,13 @@ two steps:
 
 new here? the [tstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification. stuck, or unsure which skill fits? ask [`/tialo-help`](./skills/tialo-help/SKILL.md).
 
-that's it. the other skills are situational, and the mode skill uses them for you as needed. [`/setup-tstack`](./skills/setup-tstack/SKILL.md) maps each role to a model in a project rule, and with no rule every role runs on your chat's model. its defaults send code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment to opus 5.5 at xhigh, and no role runs above xhigh. outside a review panel, fable 5.2 runs only when you name it or after two opus 5.5 runs of the same brief fail. the default panel is fable 5.2 / opus 5.5 / gemini 4 neon in cursor, and fable 5.2 / opus 5.5 / sonnet 5.5 in claude code.
+that's it. the other skills are situational, and the mode skill uses them for you as needed. [`/setup-tstack`](./skills/setup-tstack/SKILL.md) maps each role to a model in a project rule, and with no rule every role runs on your chat's model. in codex, its defaults send them to gpt-6.2-sol at xhigh, with a gpt-6.2-sol / gpt-6.2-astra / gpt-6.1-terra panel. outside a panel, gpt-6.2-astra runs only when you name it or after two gpt-6.2-sol runs of the same brief fail. in cursor and claude code, its defaults send code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment to opus 5.5 at xhigh, and no role runs above xhigh. outside a review panel, fable 5.2 runs only when you name it or after two opus 5.5 runs of the same brief fail. the default panel is fable 5.2 / opus 5.5 / gemini 4 neon in cursor, and fable 5.2 / opus 5.5 / sonnet 5.5 in claude code.
 
 ## usage
 
 use [`/tialo-mode`](./skills/tialo-mode/SKILL.md) at the start of a task. it reads your request, picks from a set of playbooks, and runs the other skills as the steps need them.
 
-pick `/tialo-mode` from the `/` menu before you type your task, so the skill is attached to the message.
+in codex, pick `tstack:tialo-mode` from the skill menu by typing `$` before your task. in cursor, pick `/tialo-mode` from the `/` menu.
 
 ### just use [`/tialo-mode`](./skills/tialo-mode/SKILL.md)
 
@@ -99,7 +101,7 @@ the full rules and playbooks live in [`skills/tialo-mode/SKILL.md`](./skills/tia
 
 in cursor, to keep [`/tialo-mode`](./skills/tialo-mode/SKILL.md) on across turns, pick it from the `/` menu and press option+enter (mac) or alt+enter (windows) instead of enter. that makes it a [custom mode](https://cursor.com/docs/skills#using-a-skill-as-a-custom-mode), which cursor offers in the agents window and the cli. it stays in context every turn until you exit the mode. plain enter attaches it to one message only. in claude code, a loaded skill stays in the chat until compaction drops it.
 
-[`/tialo-mode`](./skills/tialo-mode/SKILL.md) works extremely well with the `/loop` command. you can make the agent work for many hours without sacrificing rigor.
+[`/tialo-mode`](./skills/tialo-mode/SKILL.md) can repeat a check until it passes. use `/loop` in cursor or claude code. in codex, use `/goal` if you want to set a persistent objective.
 
 ## skills
 
@@ -135,7 +137,7 @@ in cursor, to keep [`/tialo-mode`](./skills/tialo-mode/SKILL.md) on across turns
 | [`/swarm`](./skills/swarm/SKILL.md) | you want N parallel workers across different slices or races, then one aggregated report. |
 | [`/interrogate`](./skills/interrogate/SKILL.md) | you have a diff and want different models to try to break it, keeping only findings a run proves. |
 | [`/automate-me`](./skills/automate-me/SKILL.md) | you want your own `-mode` skill, drafted from how you've actually worked. |
-| [`harness`](./skills/harness/SKILL.md) | other skills read it to map harness-neutral terms to claude code or cursor. |
+| [`harness`](./skills/harness/SKILL.md) | other skills read it to map harness-neutral terms to claude code, codex, or cursor. |
 | [`/setup-tstack`](./skills/setup-tstack/SKILL.md) | you want to pick which models tstack uses per role. detects your models and writes a config rule. |
 | [`/reflect`](./skills/reflect/SKILL.md) | a long task landed and you want the recipe captured as a skill edit. |
 | [`/correct`](./skills/correct/SKILL.md) | you keep correcting agents for the same mistakes. mines history for mistake classes, fixes each at the highest level that works (architecture, then types, lint, and ci, then tests, with docs last), and keeps a table pairing each rule with what enforces it. |
@@ -254,6 +256,8 @@ install `cursor-team-kit` alongside tstack if you want the full set.
 
 in claude code, `/setup-tstack` copies tstack's [vendored](./skills/harness/claude-code/vendor/) `deslop`, `control-cli`, and `control-ui` into your project. claude code has no `/create-skill`, so use a `skill-creator` skill if you have one.
 
+in codex, `$tstack:setup-tstack` copies the same vendored skills into `.agents/skills/`. codex has its own `$skill-creator`.
+
 ## why are there no planning skills?
 
 your harness's plan mode works great with tstack. but personally, i don't believe in planning. the best spec is code. if you do want to make a plan, [`/tialo-mode`](./skills/tialo-mode/SKILL.md) covers it, but it's not a default. 
@@ -264,7 +268,7 @@ your harness's plan mode works great with tstack. but personally, i don't believ
 
 type [`/automate-me`](./skills/automate-me/SKILL.md). it mines your recent transcripts, drafts a `<your-name>-mode` skill from how you've actually worked, and routes through tstack underneath. you keep tstack as the base and end up with your own routing skill alongside `tialo-mode`.
 
-models are configurable too. type [`/setup-tstack`](./skills/setup-tstack/SKILL.md) in your project. it detects the models you have access to and writes a small project rule, in your harness's own rules folder, mapping each role (code, judgment, the review panels) to a model. in cursor it also asks whether to use fast models and cloud agents. a role with no line runs on your chat's model.
+models are configurable too. type [`/setup-tstack`](./skills/setup-tstack/SKILL.md) in your project. it detects the models you have access to and writes a small project rule mapping each role (code, judgment, the review panels) to a model. in cursor it also asks whether to use fast models and cloud agents, and in codex which codex cloud environment runs swarm workers. a role with no line runs on your chat's model.
 
 rerunning `/setup-tstack` keeps your choices and offers newer versions of the models you picked.
 

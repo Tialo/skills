@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Tialo help
 
-Answer the user's question about tstack, hand them a prompt they can send, and link the file the answer came from. For a help question, don't start the work. The user asked how, and a tstack run spends real tokens, so let them send the prompt.
+Answer the user's question about tstack, give them a prompt in their client's command syntax (harness: interaction), and link the file the answer came from. For a help question, don't start the work. The user asked how, and a tstack run spends real tokens, so let them send the prompt.
 
 A message that asks for work, such as "use tstack to fix this bug", is not a help question. Read [`tialo-mode`](../tialo-mode/SKILL.md), do the work under it, and mention once how to keep it on (harness: interaction).
 
@@ -102,9 +102,7 @@ Close calls:
 - `/recall` rebuilds context across recent chats. `/ketchup` covers only this chat since the user's last message. Resuming one specific chat or branch is the Session pickup playbook.
 - `/figure-it-out` designs one rigorous run. The Autonomous run playbook drives one task to a finish condition.
 
-Not in tstack:
-
-- `/loop` and the skill-authoring tool come with the harness.
+For a repeated check, use the current harness's loop instructions (harness: interaction). For skill authoring, use its skill-authoring tool (harness: skills).
 
 ## Playbooks and principles
 
@@ -129,7 +127,7 @@ Principles are one-rule skills that `/tialo-mode` reads and cites in its replies
 | A new model choice had no effect | The rule from `/setup-tstack` applies to new chats. Start one. |
 | Runs cost more than expected | See the cost paragraph under Get set up. |
 | A skill didn't load on its own | Only `/setup-tstack` loads from the user's words. The others load when the user types them or when `/tialo-mode` runs them, and it doesn't run every skill. |
-| A `/loop` run moved but finished nothing | `/loop` needs a check that can pass or fail, not a duration. |
+| A loop kept running after the task was done | Give it a check that passes when the task is done, and tell it to stop then. |
 | The reply claims success from a green build | Ask for the real command, flow, stored value, or profile. That's the prove-it-works principle. |
 
 For a run that drifts, [`references/prompting.md`](references/prompting.md) has one-line steers. [Guide page 9](../../docs/guide/09-recipes-and-pitfalls.md) has more pitfalls and the recipes worth copying.

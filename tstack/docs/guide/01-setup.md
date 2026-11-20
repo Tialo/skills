@@ -16,6 +16,8 @@ Then run **Developer: Reload Window** and check that tstack's skills appear in *
 
 In Claude Code, run `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. Claude Code prefixes plugin commands, so each command in this guide takes a `tstack:` prefix there, such as `/tstack:setup-tstack`.
 
+In the Codex CLI, run `codex plugin marketplace add Tialo/skills` and `codex plugin add tstack@tialo`. In your project, type `$` to select the installed skill. Use `$tstack:setup-tstack` and `$tstack:tialo-mode` wherever this guide shows `/setup-tstack` and `/tialo-mode`. Other tstack skills use the same prefix. Setup installs the project's `tstack-reader` profile. Review and trust tstack's command filter in `/hooks` before using the reader.
+
 ## Pick your models
 
 Run:
@@ -24,9 +26,9 @@ Run:
 /setup-tstack
 ```
 
-[`/setup-tstack`](../../skills/setup-tstack/SKILL.md) detects the models you have access to, asks for a reasoning budget, shows you each role (code delegates, judgment, the review panels), and asks what you want. In Cursor it also asks whether to use fast models and cloud agents. Answer the questions. It writes a small rule into your project, in the harness's own rules folder, and every tstack skill reads it.
+[`/setup-tstack`](../../skills/setup-tstack/SKILL.md) detects the models you have access to, asks for a reasoning budget, shows you each role (code delegates, judgment, the review panels), and asks what you want. In Cursor it also asks whether to use fast models and cloud agents, and in Codex which Codex Cloud environment runs swarm workers. Answer the questions. It writes a small rule into your project and every tstack skill reads it.
 
-The defaults are the same as the `large` budget. Code, prose, and judgment run on Opus 5.5 at `xhigh` reasoning, and the review panels and swarm workers run at `high`. No role runs above `xhigh`. Outside a review panel, Fable 5.2 runs only when you name it for a task or after two Opus 5.5 runs of the same brief fail their check. Where the Cursor defaults use Gemini 4 Neon, Claude Code uses Sonnet 5.5. `medium` lowers each role one level and `small` lowers it two, and both spend fewer tokens.
+The defaults are the same as the `large` budget. In Codex, code, prose, and judgment run on GPT-6.2 Sol at `xhigh`, and the panels pair it with GPT-6.2 Astra and GPT-6.1 Terra. Outside a panel, GPT-6.2 Astra runs only when you name it or after two Sol runs of the same brief fail. Setup saves the rule in the project's `AGENTS.md`. In Claude Code and Cursor, code, prose, and judgment run on Opus 5.5 at `xhigh` reasoning, and the review panels and swarm workers run at `high`. No role runs above `xhigh`. Outside a review panel, Fable 5.2 runs only when you name it for a task or after two Opus 5.5 runs of the same brief fail their check. Where the Cursor defaults use Gemini 4 Neon, Claude Code uses Sonnet 5.5. `medium` lowers each role one level and `small` lowers it two, and both spend fewer tokens.
 
 A role with no line in the rule, or a project with no rule, runs on your chat's model. A rerun of `/setup-tstack` keeps your choices and offers newer versions of the models you picked. For a panel role the value is a list, and one subagent runs per entry, so the list length sets the panel size. Setup also configures `swarm workers`, the default model for every `/swarm` worker unless a race names a model for each arm.
 
@@ -61,6 +63,6 @@ Pick something real but small, and describe it the way you'd describe it to a co
 
 Watch the todo list. Its first items are the matched playbook's steps copied in, the Feature playbook for this prompt.
 
-From here you can type normal follow-ups. In Claude Code, the skill stays in the chat until compaction drops it. In Cursor, to keep `/tialo-mode` on for the whole chat, pick it from the `/` menu with Option+Enter (Mac) or Alt+Enter (Windows) instead of Enter. That makes it a [Custom Mode](https://cursor.com/docs/skills#using-a-skill-as-a-custom-mode), which stays in context on every turn until you exit it. Custom Modes are available in the Agents Window and the CLI. Plain Enter attaches the skill to one message, and it fades as the chat moves on.
+From here you can type normal follow-ups. In Codex, select the skill again when starting a new task. In Claude Code, the skill stays in the chat until compaction drops it. In Cursor, to keep `/tialo-mode` on for the whole chat, pick it from the `/` menu with Option+Enter (Mac) or Alt+Enter (Windows) instead of Enter. That makes it a [Custom Mode](https://cursor.com/docs/skills#using-a-skill-as-a-custom-mode), which stays in context on every turn until you exit it. Custom Modes are available in the Agents Window and the CLI. Plain Enter attaches the skill to one message, and it fades as the chat moves on.
 
 Next: [Route work through `/tialo-mode`](./02-tialo-mode.md).

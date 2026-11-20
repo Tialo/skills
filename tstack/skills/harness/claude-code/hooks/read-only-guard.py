@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Read-only guard for the tstack:reader subagent (PreToolUse).
+PreToolUse command filter for the Claude Code and Codex tstack readers.
 
 Adapted from cli-tool/components/hooks/security/subagent-read-only-guard.py in
 davila7/claude-code-templates at ba0dc390209543a781f3a10547a186fb23d1aeaf,
 under the MIT license in LICENSE next to this file. The original guards every
-subagent. This copy guards only the tstack:reader subagent, so the main
-conversation and other subagents pass through untouched.
+subagent. The plugin invokes this copy for its named reader on each host.
 
 A shell command is allowed only when every command in it is a bare program
 name from a short allowlist of read-only tools, called without the options
@@ -360,13 +359,17 @@ def main():
         print("subagent-read-only-guard: unreadable hook input", file=sys.stderr)
         sys.exit(2)
 
-    if not isinstance(data, dict) or data.get("agent_type") not in READER_TYPES:
+    codex = sys.argv[1:] == ["--codex"]
+    reader_types = {"tstack-reader"} if codex else READER_TYPES
+    if not isinstance(data, dict) or data.get("agent_type") not in reader_types:
         sys.exit(0)
 
     agent = data["agent_type"]
     prefix = "Blocked by subagent-read-only-guard: %s is exploration-only." % agent
     tool = data.get("tool_name", "")
     try:
+        if codex and tool not in {"Bash", "view_image", "webrun"}:
+            deny("%s %s is outside the reader's tool list." % (prefix, tool))
         if tool in WRITE_TOOLS:
             deny("%s %s is not allowed. Describe the change in your report so the main agent can apply it." % (prefix, tool))
         if tool in SHELL_TOOLS:

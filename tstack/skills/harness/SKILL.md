@@ -10,16 +10,16 @@ tstack skills use harness-neutral terms. A step marked `(harness: <topic>)` uses
 
 ## Find the harness
 
-The `harness:` line of the tstack rule in your context names it. With no rule, tell the harness by its subagent tool. `Agent` means `claude-code`, and `Task` means `cursor`. Any other harness has no folder here, so map each term yourself.
+Use the current client's identity. Claude Code uses `claude-code`, Codex uses `codex`, and Cursor uses `cursor`. If the client is ambiguous, check the subagent tool: `Agent`, `spawn_agent`, or `Task`, respectively. Use the tstack rule whose `harness:` line matches this client. For an unlisted client, map each term to the tools available in the session.
 
 ## Terms
 
 | Term | Topic |
 |---|---|
 | spawn a subagent, general worker, `tialo-agent`, read-only subagent, cloud worker, a role's model, one level up or down, model family, resume or stop a subagent | `subagents` |
-| structured question, repeat until a predicate holds, wake on an event, show media to the user, user command, keep a skill on across turns | `interaction` |
+| todo list, structured question, repeat until a predicate holds, wake on an event, show media to the user, user command, keep a skill on across turns | `interaction` |
 | this workspace's transcripts, current session, subagent transcripts | `transcripts` |
-| project skills folder, personal skills folder, installed plugin copy, skill-authoring tool, external skill, install external skills | `skills` |
+| project skills folder, personal skills folder, installed plugin copy, explicit-only invocation, skill-authoring tool, external skill, install external skills | `skills` |
 | detect models, role value, default roles, rule file, harness options | `models` |
 
 ## Roles

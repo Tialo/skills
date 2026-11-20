@@ -1,6 +1,6 @@
 # Tialo's skills
 
-This repository ships [tstack](tstack/README.md), a plugin with agent workflows, engineering principles and review skills for Claude Code and Cursor.
+This repository ships [tstack](tstack/README.md), a plugin with agent workflows, engineering principles and review skills for Claude Code, Codex, and Cursor.
 
 ## Install
 
@@ -13,6 +13,18 @@ claude plugin install tstack@tialo
 ```
 
 Update with `claude plugin marketplace update tialo`, then `claude plugin update tstack@tialo`.
+
+</details>
+
+<details>
+<summary><strong>Codex</strong></summary>
+
+```bash
+codex plugin marketplace add Tialo/skills
+codex plugin add tstack@tialo
+```
+
+Open Codex in your project and run `$tstack:setup-tstack`. To enable the read-only reader, review and trust tstack’s hook in `/hooks` and start a new session.
 
 </details>
 

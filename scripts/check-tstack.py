@@ -9,7 +9,7 @@ from pathlib import Path
 TSTACK = Path(__file__).resolve().parent.parent / "tstack"
 SKILLS = TSTACK / "skills"
 HARNESS = SKILLS / "harness"
-HARNESSES = ["claude-code", "cursor"]
+HARNESSES = ["claude-code", "codex", "cursor"]
 MARKER = re.compile(r"\(harness: ([a-z-]+)")
 LINK = re.compile(r"\]\(([^)\s]+)\)")
 BARE_SKILL = re.compile(r"(?<!\[)\*\*([a-z0-9-]+)\*\*(?!\]\()")
@@ -18,7 +18,8 @@ SKILL_NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DENY = re.compile(
     r"AskQuestion|AskUserQuestion|generalPurpose|run_in_background|"
     r"readonly: |environment: \"|isolation: |cloud_base_branch|inherit-parent|agent-transcripts|"
-    r"\.cursor/|\.claude/|\.mdc\b|\bclaude-[a-z]+-\d|\bgemini-|\bgpt-\d|\bgrok-\d|-fast\b|"
+    r"\.cursor/|\.claude/|\.codex/|\.agents/skills/|\bspawn_agent\b|\bCodex\b|"
+    r"\.mdc\b|\bclaude-[a-z]+-\d|\bgemini-|\bgpt-\d|\bgrok-\d|-fast\b|"
     r"\b(Opus|Sonnet|Fable|Haiku)\b|\bCursor\b|Claude Code"
 )
 
@@ -36,12 +37,19 @@ problems = []
 
 for skill in sorted(skills):
     text = (SKILLS / skill / "SKILL.md").read_text()
-    match = re.search(r"^name:\s*(.*)$", text.split("\n---", 1)[0], re.M)
+    frontmatter = text.split("\n---", 1)[0]
+    match = re.search(r"^name:\s*(.*)$", frontmatter, re.M)
     name = match.group(1).strip().strip("\"'") if match else ""
     if name != skill:
         problems.append(f"skills/{skill}/SKILL.md has name {name!r}, not its folder name")
     if not SKILL_NAME.match(skill) or len(skill) > 64:
         problems.append(f"skills/{skill} is not lowercase words joined by hyphens, at most 64 characters")
+    explicit_only = "disable-model-invocation: true" in frontmatter.splitlines()
+    metadata = SKILLS / skill / "agents/openai.yaml"
+    codex_policy = metadata.read_text() if metadata.exists() else ""
+    codex_explicit_only = "policy:\n  allow_implicit_invocation: false\n" in codex_policy
+    if explicit_only != codex_explicit_only:
+        problems.append(f"skills/{skill}: Codex invocation policy differs from the skill frontmatter")
 
 for path in markdown(TSTACK):
     rel = path.relative_to(TSTACK).as_posix()
