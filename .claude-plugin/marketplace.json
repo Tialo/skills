@@ -4,20 +4,13 @@
     "name": "Tialo",
     "url": "https://github.com/Tialo"
   },
-  "description": "Tialo's agent skills.",
+  "description": "Tialo's agent plugins.",
   "plugins": [
     {
-      "name": "tialo-skills",
-      "source": "./",
-      "description": "Tialo's agent skills.",
-      "category": "productivity",
-      "keywords": [
-        "skills",
-        "dependencies",
-        "upstream",
-        "open-source",
-        "bug-report"
-      ]
+      "name": "tstack",
+      "source": "./tstack",
+      "description": "if you want to go fast, go deep first. tstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
+      "category": "development"
     }
   ]
 }

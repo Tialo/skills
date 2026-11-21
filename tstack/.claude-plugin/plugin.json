@@ -1,0 +1,26 @@
+{
+  "name": "tstack",
+  "version": "0.2.0",
+  "description": "if you want to go fast, go deep first. tstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
+  "author": {
+    "name": "Tialo",
+    "url": "https://github.com/Tialo"
+  },
+  "homepage": "https://github.com/Tialo/skills/tree/main/tstack",
+  "repository": "https://github.com/Tialo/skills",
+  "license": "MIT",
+  "keywords": [
+    "tstack",
+    "tialo-mode",
+    "workflow",
+    "principles",
+    "agent-style",
+    "subagents",
+    "unslop"
+  ],
+  "agents": [
+    "./agents/tialo-agent.md",
+    "./skills/harness/claude-code/agents/reader.md"
+  ],
+  "hooks": "./skills/harness/claude-code/hooks/hooks.json"
+}

@@ -1,3 +1,0 @@
-interface:
-  display_name: "Report Upstream Issues"
-  short_description: "Check upstream and report dependency bugs you work around"

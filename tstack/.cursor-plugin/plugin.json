@@ -1,0 +1,32 @@
+{
+	"name": "tstack",
+	"displayName": "tstack",
+	"version": "0.2.0",
+	"description": "if you want to go fast, go deep first. tstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
+	"author": {
+		"name": "Tialo",
+		"url": "https://github.com/Tialo"
+	},
+	"homepage": "https://github.com/Tialo/skills/tree/main/tstack",
+	"repository": "https://github.com/Tialo/skills",
+	"license": "MIT",
+	"logo": "assets/logo.png",
+	"keywords": [
+		"tstack",
+		"tialo-mode",
+		"workflow",
+		"principles",
+		"agent-style",
+		"subagents",
+		"unslop"
+	],
+	"category": "developer-tools",
+	"tags": [
+		"workflow",
+		"principles",
+		"review",
+		"planning"
+	],
+	"skills": "./skills/",
+	"agents": "./agents/"
+}
