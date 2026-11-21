@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/harness/claude-code/hooks/read-only-guard.py\""
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/harness/hooks/read-only-guard.py\""
           }
         ]
       }
