@@ -19,7 +19,7 @@ Use the current client's identity. Claude Code uses `claude-code`, Codex uses `c
 | spawn a subagent, general worker, `tialo-agent`, read-only subagent, cloud worker, a role's model, one level up or down, model family, resume or stop a subagent | `subagents` |
 | todo list, structured question, repeat until a predicate holds, wake on an event, show media to the user, user command, keep a skill on across turns | `interaction` |
 | this workspace's transcripts, current session, subagent transcripts | `transcripts` |
-| project skills folder, personal skills folder, installed plugin copy, explicit-only invocation, skill-authoring tool, external skill, install external skills | `skills` |
+| project skills folder, shared project skills folder, personal skills folder, installed plugin copy, explicit-only invocation, skill-authoring tool, external skill, install external skills | `skills` |
 | detect models, role value, default roles, rule file, harness options | `models` |
 
 ## Roles

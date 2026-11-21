@@ -23,3 +23,4 @@
 * `setup-tstack` writes a project rule with the model for each role and the harness options.
 * Added the `report-upstream-issues` skill.
 * Added the `grill-me` and `improve-codebase-architecture` skills from mattpocock/skills.
+* `create-verification-skill` and `create-formal-verification-skill` write the generated skill to `.agents/skills/`, shared by Claude Code, Codex, and Cursor; in Claude Code they also symlink it into `.claude/skills/`. `maintain-verification-skill` looks for it there.

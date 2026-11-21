@@ -4,6 +4,7 @@
 |---|---|
 | explicit-only invocation | Set `policy.allow_implicit_invocation: false` in the skill's `agents/openai.yaml`. |
 | project skills folder | `.agents/skills/<name>/SKILL.md` |
+| shared project skills folder | `.agents/skills/<name>/SKILL.md` |
 | personal skills folder | `~/.agents/skills/<name>/SKILL.md` |
 | installed plugin copy | `~/.codex/plugins/cache/`. Never edit it. |
 | external skill (`deslop`, `control-cli`, `control-ui`) | The skill of that name from the `cursor-vendored` plugin, which `setup-tstack` installs. |
