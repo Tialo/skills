@@ -46,7 +46,7 @@ Every model written must be detected and at `xhigh` or below. If a chosen model 
 
 ### 5. Write the rule
 
-Write the rule file in the topic's shape: the header comment, the `harness` line, the `budget` line with the chosen label and the effort it names, one line per harness option, and one line per role. Replace the previous tstack rule at the location the topic specifies. Preserve surrounding project instructions.
+Write the rule file in the topic's shape: the header comment, the `harness` line, the `budget` line with the chosen label and the effort it names, one line per harness option, and one line per role. Replace the previous tstack rule at the location the topic specifies.
 
 ### 6. Install external skills
 

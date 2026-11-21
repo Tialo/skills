@@ -19,7 +19,6 @@
 * Renumbered guide pages 08–10 to 07–09 after removing the overnight page.
 * Removed `typescript-best-practices`. Shared skills support external type checkers or manual type analysis when the compiler does not check types.
 * Made tstack harness-agnostic. Skills use harness-neutral terms, and the new `harness` skill maps them for Claude Code, Codex, and Cursor. Vendored the Cursor-native `deslop`, `control-cli`, and `control-ui` as the separate `cursor-vendored` plugin for Claude Code and Codex, and removed the separate Claude Code build.
-* `setup-tstack` preserves other project instructions when it writes Codex role settings.
 * `setup-tstack` writes a project rule with the model for each role and the harness options.
 * Added the `report-upstream-issues` skill.
 * Added the `grill-me` and `improve-codebase-architecture` skills from mattpocock/skills.

@@ -5,12 +5,11 @@
 - Default roles: the newest `sol` model for the code roles, `judgment and prose`, and `swarm workers`. Panels take the newest model of up to three families, `sol` first. The cross-judge pool is the panel's models with `sol` last. `escalation` is the newest `astra` model, which the catalog calls the most capable.
 - Harness options. Ask once, and on a re-run show the current value.
   - `cloud`: a Codex Cloud environment id, which `codex cloud` lists, or `off`. An id runs swarm workers as Codex Cloud tasks in that environment.
-- Rule file: the project's root `AGENTS.md`, between the `tstack:codex` markers. On first setup, append the block. On a rerun, replace only the text between the markers.
+- Rule file: `.codex/tstack.md` in the project. Codex does not load it into a session, so read it whenever a step needs the tstack rule.
 
 Shape, with the default roles and `cloud: off`:
 
-```markdown
-<!-- tstack:codex:start -->
+```
 # tstack configuration, written by setup-tstack. Rerun it to change. A role with no line runs on the parent model.
 harness: codex
 budget: large (xhigh)
@@ -25,5 +24,4 @@ arena cross-judge pool: gpt-6.2-astra high, gpt-6.1-terra high, gpt-6.2-sol high
 swarm workers: gpt-6.2-sol high
 interrogate reviewers: gpt-6.2-sol high, gpt-6.2-astra high, gpt-6.1-terra high
 escalation: gpt-6.2-astra high
-<!-- tstack:codex:end -->
 ```
