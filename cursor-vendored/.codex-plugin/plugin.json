@@ -1,0 +1,13 @@
+{
+  "name": "cursor-vendored",
+  "version": "0.1.0",
+  "description": "Cursor's deslop, control-cli, and control-ui skills, vendored for harnesses without cursor-team-kit.",
+  "author": {
+    "name": "Tialo",
+    "url": "https://github.com/Tialo"
+  },
+  "homepage": "https://github.com/Tialo/skills/tree/main/cursor-vendored",
+  "repository": "https://github.com/Tialo/skills",
+  "license": "MIT",
+  "skills": "./skills"
+}

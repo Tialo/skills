@@ -9,6 +9,7 @@
   "homepage": "https://github.com/Tialo/skills/tree/main/tstack",
   "repository": "https://github.com/Tialo/skills",
   "license": "MIT",
+  "dependencies": ["cursor-vendored"],
   "keywords": [
     "tstack",
     "tialo-mode",

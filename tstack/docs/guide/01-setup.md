@@ -14,9 +14,9 @@ rsync -a --delete tialo-skills/tstack/ ~/.cursor/plugins/local/tstack/
 
 Then run **Developer: Reload Window** and check that tstack's skills appear in **Customize**.
 
-In Claude Code, run `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. Claude Code prefixes plugin commands, so each command in this guide takes a `tstack:` prefix there, such as `/tstack:setup-tstack`.
+In Claude Code, run `/plugin marketplace add Tialo/skills`, then `/plugin install tstack@tialo`. Claude Code prefixes plugin commands, so each command in this guide takes a `tstack:` prefix there, such as `/tstack:setup-tstack`. `deslop`, `control-cli`, and `control-ui` come from the `cursor-vendored` plugin, which installs with tstack, so they take a `cursor-vendored:` prefix, such as `/cursor-vendored:deslop`.
 
-In the Codex CLI, run `codex plugin marketplace add Tialo/skills` and `codex plugin add tstack@tialo`. In your project, type `$` to select the installed skill. Use `$tstack:setup-tstack` and `$tstack:tialo-mode` wherever this guide shows `/setup-tstack` and `/tialo-mode`. Other tstack skills use the same prefix. Setup installs the project's `tstack-reader` profile. Review and trust tstack's command filter in `/hooks` before using the reader.
+In the Codex CLI, run `codex plugin marketplace add Tialo/skills` and `codex plugin add tstack@tialo`. In your project, type `$` to select the installed skill. Use `$tstack:setup-tstack` and `$tstack:tialo-mode` wherever this guide shows `/setup-tstack` and `/tialo-mode`. Other tstack skills use the same prefix, and `deslop`, `control-cli`, and `control-ui` take `$cursor-vendored:`. Setup installs the `cursor-vendored` plugin and the project's `tstack-reader` profile. Review and trust tstack's command filter in `/hooks` before using the reader.
 
 ## Pick your models
 

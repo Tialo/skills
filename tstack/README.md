@@ -254,9 +254,9 @@ a few things `tialo-mode` references but doesn't bundle. in cursor:
 
 install `cursor-team-kit` alongside tstack if you want the full set.
 
-in claude code, `/setup-tstack` copies tstack's [vendored](./skills/harness/claude-code/vendor/) `deslop`, `control-cli`, and `control-ui` into your project. claude code has no `/create-skill`, so use a `skill-creator` skill if you have one.
+in claude code and codex, `deslop`, `control-cli`, and `control-ui` come from the [`cursor-vendored`](../cursor-vendored/) plugin in the same marketplace. claude code installs it with tstack as a dependency, so they are `/cursor-vendored:deslop` and so on. claude code has no `/create-skill`, so use a `skill-creator` skill if you have one.
 
-in codex, `$tstack:setup-tstack` copies the same vendored skills into `.agents/skills/`. codex has its own `$skill-creator`.
+in codex, `$tstack:setup-tstack` installs `cursor-vendored`. codex has its own `$skill-creator`.
 
 ## why are there no planning skills?
 
