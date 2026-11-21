@@ -1,5 +1,3 @@
-# Tialo's skills
-
 This repository ships [tstack](tstack/README.md), a plugin with agent workflows, engineering principles and review skills for Claude Code, Codex, and Cursor.
 
 ## Install
